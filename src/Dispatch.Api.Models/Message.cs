@@ -1,6 +1,6 @@
 ﻿namespace Dispatch.Api.Models
 {
-    public class Message : IDispatchMessage
+    public class Message
     {
     }
 }

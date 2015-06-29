@@ -5,7 +5,7 @@
 
     public class DispatchController : ApiController
     {
-        public void Post([FromBody] IDispatchMessage message)
+        public void Post([FromBody] Message message)
         {
         }
     }
