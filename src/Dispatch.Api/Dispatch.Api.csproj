@@ -160,7 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Dispatch.Api.dll.config" />
-    <Content Include="packages.config" />
     <Content Include="bin\Models\AgendaModel.ssdl" />
     <Content Include="bin\Models\AgendaModel.msl" />
     <Content Include="bin\Models\AgendaModel.csdl" />
