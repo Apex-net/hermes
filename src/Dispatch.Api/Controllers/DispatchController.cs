@@ -3,12 +3,15 @@
     using System;
     using System.Web.Http;
     using Dispatch.Api.Models;
+    using Hangfire;
 
     public class DispatchController : ApiController
     {
         public IHttpActionResult Post([FromBody] Message message)
         {
             Finalize(message);
+
+            BackgroundJob.Enqueue(() => Console.WriteLine("Ping"));
 
             return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = Guid.NewGuid() }, message);
         }
