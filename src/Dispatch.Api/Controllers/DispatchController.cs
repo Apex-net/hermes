@@ -1,8 +1,9 @@
-﻿namespace Dispatch.Api.Controllers
+﻿namespace Apexnet.Dispatch.Api.Controllers
 {
     using System.Web.Http;
-    using Dispatch.Api.Models;
-    using Dispatch.Api.Schedulers;
+    using Apexnet.Dispatch.Api.Models;
+    using Apexnet.JobSchedule;
+    using Apexnet.JobSchedule.Schedulers;
 
     public class DispatchController : ApiController
     {

@@ -1,8 +1,8 @@
-﻿namespace Dispatch.Api.Schedulers
+﻿namespace Apexnet.JobSchedule.Schedulers
 {
     using System;
-    using Dispatch.Api.Models;
-    using global::Hangfire;
+    using Apexnet.JobSchedule;
+    using Hangfire;
 
     public class HangfireScheduler<TScheduled> : IScheduler
     {

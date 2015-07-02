@@ -1,10 +1,10 @@
-﻿using Dispatch.Api.App_Start;
+﻿using Apexnet.Dispatch.Api.App_Start;
 using Microsoft.Owin;
 
 [assembly: OwinStartup(typeof(HangfireStart))]
 
 // ReSharper disable once CheckNamespace
-namespace Dispatch.Api.App_Start
+namespace Apexnet.Dispatch.Api.App_Start
 {
     using System;
     using Hangfire;

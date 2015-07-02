@@ -1,4 +1,4 @@
-﻿namespace Dispatch.Api.Models
+﻿namespace Apexnet.Dispatch.Api.Models
 {
     using System;
     using System.Collections.Generic;

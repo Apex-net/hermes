@@ -1,4 +1,4 @@
-﻿namespace Dispatch.Api
+﻿namespace Apexnet.Dispatch.Api
 {
     using System.Web.Http;
 

@@ -1,14 +1,22 @@
-using System.Web;
-using System.Web.Mvc;
-using System.Web.WebPages;
-using RazorGenerator.Mvc;
+using Apexnet.Dispatch.Api.App_Start;
+using WebActivatorEx;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(Dispatch.Api.App_Start.RazorGeneratorMvcStart), "Start")]
+[assembly: PostApplicationStartMethod(typeof(RazorGeneratorMvcStart), "Start")]
 
-namespace Dispatch.Api.App_Start {
-    public static class RazorGeneratorMvcStart {
-        public static void Start() {
-            var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly) {
+// ReSharper disable once CheckNamespace
+namespace Apexnet.Dispatch.Api.App_Start
+{
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Web.WebPages;
+    using RazorGenerator.Mvc;
+
+    public static class RazorGeneratorMvcStart
+    {
+        public static void Start()
+        {
+            var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly)
+            {
                 UsePhysicalViewsIfNewer = HttpContext.Current.Request.IsLocal
             };
 

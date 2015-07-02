@@ -1,7 +1,8 @@
-﻿namespace Dispatch.Api.Models
+﻿namespace Apexnet.Dispatch.Api.Models
 {
     using System;
     using System.Linq.Expressions;
+    using Apexnet.JobSchedule;
 
     public class SchedulableMessage : ISchedulable
     {
