@@ -1,28 +1,29 @@
 ﻿namespace Dispatch.Api.Controllers
 {
-    using System;
     using System.Web.Http;
     using Dispatch.Api.Models;
-    using Hangfire;
+    using Dispatch.Api.Schedulers;
 
     public class DispatchController : ApiController
     {
+        private readonly IScheduler messageScheduler;
+
+        public DispatchController()
+            : this(null)
+        {
+        }
+
+        public DispatchController(IScheduler messageScheduler)
+        {
+            this.messageScheduler = messageScheduler ?? new HangfireScheduler<ScheduledMessage>();
+        }
+
         public IHttpActionResult Post([FromBody] Message message)
         {
-            Finalize(message);
+            var schedulable = SchedulableMessage.FromMessage(message);
+            var scheduled = this.messageScheduler.Schedule(schedulable);
 
-            BackgroundJob.Enqueue(() => Console.WriteLine("Ping"));
-
-            return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = Guid.NewGuid() }, message);
+            return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
         }
-
-        #region /// internal ///////////////////////////////////////////////////
-
-        private static void Finalize(Message message)
-        {
-            message.Scheduled = message.Scheduled ?? DateTime.Now;
-        }
-
-        #endregion
     }
 }

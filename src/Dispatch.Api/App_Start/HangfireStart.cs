@@ -6,6 +6,7 @@ using Microsoft.Owin;
 // ReSharper disable once CheckNamespace
 namespace Dispatch.Api.App_Start
 {
+    using System;
     using Hangfire;
     using Hangfire.Redis.StackExchange;
     using Owin;
@@ -15,14 +16,14 @@ namespace Dispatch.Api.App_Start
         public void Configuration(IAppBuilder app)
         {
             ////GlobalConfiguration.Configuration.UseMemoryStorage();
-
-            var storageOptions = new RedisStorageOptions { Prefix = "hangfire:" };
-            GlobalConfiguration.Configuration.UseRedisStorage("tangeri:6379", storageOptions);
+            GlobalConfiguration.Configuration.UseRedisStorage(
+                "tangeri:6379",
+                new RedisStorageOptions { Prefix = "hangfire:" });
 
             // Map Dashboard to the `http://<your-app>/jobs` URL.
             app.UseHangfireDashboard("/jobs");
 
-            app.UseHangfireServer();
+            app.UseHangfireServer(new BackgroundJobServerOptions { SchedulePollingInterval = TimeSpan.FromSeconds(5) });
         }
     }
 }
