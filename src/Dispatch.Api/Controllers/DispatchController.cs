@@ -1,6 +1,7 @@
 ﻿namespace Apexnet.Dispatch.Api.Controllers
 {
     using System.Web.Http;
+    using Apexnet.Dispatch.Api.Bundle;
     using Apexnet.Dispatch.Api.Models;
     using Apexnet.JobSchedule;
     using Apexnet.JobSchedule.Schedulers;
@@ -21,10 +22,10 @@
             this.messageScheduler = messageScheduler ?? new HangfireScheduler<ScheduledMessage>();
         }
 
-        public IHttpActionResult Post([FromBody] Message message)
+        public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
         {
-            var schedulable = SchedulableMessage.FromMessage(message);
-            var scheduled = this.messageScheduler.Schedule(schedulable);
+            var job = ScheduledBundleJob.FromScheduledBundle(bundle);
+            var scheduled = this.messageScheduler.Schedule(job);
 
             return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
         }

@@ -1,9 +1,11 @@
-﻿namespace Apexnet.Dispatch.Api.Models
+﻿namespace Apexnet.Dispatch.Api
 {
     using System;
+    using Apexnet.Dispatch.Api.Annotations;
     using Apexnet.JobSchedule;
     using Newtonsoft.Json;
 
+    [UsedImplicitly]
     public class ScheduledMessage : IScheduled
     {
         [JsonIgnore]
