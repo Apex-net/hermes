@@ -6,22 +6,32 @@
 
     public class SchedulableMessage : ISchedulable
     {
-        private SchedulableMessage()
+        private readonly Message message;
+
+        private SchedulableMessage(Message message)
         {
+            this.message = message;
         }
 
-        public DateTimeOffset Schedule { get; set; }
+        Expression<Action> IQueueable.Job
+        {
+            get
+            {
+                return () => Console.WriteLine("Hello");
+            }
+        }
 
-        public Expression<Action> Job { get; set; }
+        public DateTimeOffset Schedule
+        {
+            get
+            {
+                return this.message.Schedule ?? DateTime.Now;
+            }
+        }
 
         public static SchedulableMessage FromMessage(Message message)
         {
-            return new SchedulableMessage { Schedule = message.Schedule ?? DateTime.Now, Job = () => Queue(message), };
-        }
-
-        public static void Queue(Message message)
-        {
-            Console.WriteLine(message.Emails);
+            return new SchedulableMessage(message);
         }
     }
 }

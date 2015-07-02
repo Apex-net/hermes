@@ -4,17 +4,19 @@
     using Apexnet.Dispatch.Api.Models;
     using Apexnet.JobSchedule;
     using Apexnet.JobSchedule.Schedulers;
+    using Common.Annotations;
 
     public class DispatchController : ApiController
     {
         private readonly IScheduler messageScheduler;
 
+        [UsedImplicitly]
         public DispatchController()
             : this(null)
         {
         }
 
-        public DispatchController(IScheduler messageScheduler)
+        private DispatchController(IScheduler messageScheduler)
         {
             this.messageScheduler = messageScheduler ?? new HangfireScheduler<ScheduledMessage>();
         }
