@@ -1,4 +1,4 @@
-namespace Apexnet.JobSchedule
+namespace Apexnet.JobQueue
 {
     using System;
 

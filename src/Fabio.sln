@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatch.Api", "Dispatch.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatch.Api.Models", "Dispatch.Api.Models\Dispatch.Api.Models.csproj", "{37814798-14B0-4E08-82A0-66A5B96176C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobSchedule", "JobSchedule\JobSchedule.csproj", "{AA2614BF-1E96-4419-B25B-B101A31F6F17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobQueue", "JobQueue\JobQueue.csproj", "{AA2614BF-1E96-4419-B25B-B101A31F6F17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

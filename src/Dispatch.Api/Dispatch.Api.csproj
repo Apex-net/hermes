@@ -217,9 +217,9 @@
       <Project>{37814798-14b0-4e08-82a0-66a5b96176c1}</Project>
       <Name>Dispatch.Api.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\JobSchedule\JobSchedule.csproj">
+    <ProjectReference Include="..\JobQueue\JobQueue.csproj">
       <Project>{AA2614BF-1E96-4419-B25B-B101A31F6F17}</Project>
-      <Name>JobSchedule</Name>
+      <Name>JobQueue</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

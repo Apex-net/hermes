@@ -1,10 +1,9 @@
-﻿namespace Apexnet.JobSchedule.Schedulers
+﻿namespace Apexnet.JobQueue.JobQueues
 {
     using System;
-    using Apexnet.JobSchedule;
     using Hangfire;
 
-    public class HangfireScheduler<TScheduled> : IScheduler
+    public class HangfireJobQueue<TScheduled> : IJobQueue
     {
         public IScheduled Schedule(ISchedulable schedulable)
         {

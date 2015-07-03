@@ -2,7 +2,7 @@
 {
     using System;
     using Apexnet.Dispatch.Api.Annotations;
-    using Apexnet.JobSchedule;
+    using Apexnet.JobQueue;
     using Newtonsoft.Json;
 
     [UsedImplicitly]

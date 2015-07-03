@@ -57,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobSchedule\JobSchedule.csproj">
+    <ProjectReference Include="..\JobQueue\JobQueue.csproj">
       <Project>{aa2614bf-1e96-4419-b25b-b101a31f6f17}</Project>
-      <Name>JobSchedule</Name>
+      <Name>JobQueue</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

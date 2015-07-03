@@ -7,8 +7,8 @@
     <ProjectGuid>{AA2614BF-1E96-4419-B25B-B101A31F6F17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Apexnet.JobSchedule</RootNamespace>
-    <AssemblyName>Apexnet.JobSchedule</AssemblyName>
+    <RootNamespace>Apexnet.JobQueue</RootNamespace>
+    <AssemblyName>Apexnet.JobQueue</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>92fa04ee</NuGetPackageImportStamp>
@@ -55,9 +55,9 @@
     <Compile Include="IQueueable.cs" />
     <Compile Include="ISchedulable.cs" />
     <Compile Include="IScheduled.cs" />
-    <Compile Include="IScheduler.cs" />
+    <Compile Include="IJobQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schedulers\HangfireScheduler.cs" />
+    <Compile Include="JobQueues\HangfireJobQueue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

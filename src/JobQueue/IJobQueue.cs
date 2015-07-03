@@ -1,6 +1,6 @@
-namespace Apexnet.JobSchedule
+namespace Apexnet.JobQueue
 {
-    public interface IScheduler
+    public interface IJobQueue
     {
         IScheduled Schedule(ISchedulable schedulable);
     }

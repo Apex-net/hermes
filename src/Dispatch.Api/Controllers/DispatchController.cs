@@ -3,13 +3,13 @@
     using System.Web.Http;
     using Apexnet.Dispatch.Api.Bundle;
     using Apexnet.Dispatch.Api.Models;
-    using Apexnet.JobSchedule;
-    using Apexnet.JobSchedule.Schedulers;
+    using Apexnet.JobQueue;
+    using Apexnet.JobQueue.JobQueues;
     using Common.Annotations;
 
     public class DispatchController : ApiController
     {
-        private readonly IScheduler messageScheduler;
+        private readonly IJobQueue messageJobQueue;
 
         [UsedImplicitly]
         public DispatchController()
@@ -17,15 +17,15 @@
         {
         }
 
-        private DispatchController(IScheduler messageScheduler)
+        private DispatchController(IJobQueue messageJobQueue)
         {
-            this.messageScheduler = messageScheduler ?? new HangfireScheduler<ScheduledMessage>();
+            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<ScheduledMessage>();
         }
 
         public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
         {
             var job = ScheduledBundleJob.FromScheduledBundle(bundle);
-            var scheduled = this.messageScheduler.Schedule(job);
+            var scheduled = this.messageJobQueue.Schedule(job);
 
             return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
         }
