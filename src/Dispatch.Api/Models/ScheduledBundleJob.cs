@@ -58,6 +58,7 @@
 
             mailMessage.Subject = message.Subject;
             mailMessage.Body = message.Body;
+            mailMessage.IsBodyHtml = message.IsBodyHtml;
 
             var client = new SmtpClient();
             client.Send(mailMessage);
