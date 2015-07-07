@@ -6,26 +6,40 @@ using Microsoft.Owin;
 // ReSharper disable once CheckNamespace
 namespace Apexnet.Dispatch.Api.App_Start
 {
-    using System;
+    using System.Linq;
+    using Apexnet.Dispatch.Api.Properties;
+    using Apexnet.JobQueue.JobStorages.Hangfire;
     using Common.Annotations;
     using Hangfire;
-    using Hangfire.Redis.StackExchange;
     using Owin;
 
     public class HangfireStart
     {
+        private static readonly IHangfireJobStorage[] HangfireJobStorages =
+        {
+            new HangfireRedisStorage("hangfire-redis"), 
+            new HangfireMemoryStorage("hangfire-memory")
+        };
+
         [UsedImplicitly]
         public void Configuration(IAppBuilder app)
         {
-            ////GlobalConfiguration.Configuration.UseMemoryStorage();
-            GlobalConfiguration.Configuration.UseRedisStorage(
-                "tangeri:6379",
-                new RedisStorageOptions { Prefix = "hangfire:" });
+            ConfigureEnabledHangfireJobStorage(Settings.Default.JobStorageName);
 
             // Map Dashboard to the `http://<your-app>/jobs` URL.
             app.UseHangfireDashboard("/jobs");
 
-            app.UseHangfireServer(new BackgroundJobServerOptions { SchedulePollingInterval = TimeSpan.FromSeconds(5) });
+            app.UseHangfireServer();
         }
+
+        #region /// internal ///////////////////////////////////////////////////
+
+        private static void ConfigureEnabledHangfireJobStorage(string configuredStorageName)
+        {
+            HangfireJobStorages.Single(x => x.Name == configuredStorageName)
+                               .Configure(GlobalConfiguration.Configuration);
+        }
+
+        #endregion
     }
 }

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<minimalLanguageDiagram dslVersion="1.0.0.0" Id="2dec4bfc-6000-4a41-90f7-9b9794141c54" absoluteBounds="0, 0, 11, 8.5" name="ConfigurationSection">
+  <configurationSectionModelMoniker Id="d0ed9acb-0435-4532-afdd-b5115bc4d562" />
+  <nestedChildShapes>
+    <configurationSectionShape Id="7864333f-a552-4016-a64d-d849e60d609b" absoluteBounds="1.625, 3.5, 1.75, 1.4033821614583335" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/RedisStorage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a1ad791-0873-4957-a282-fcca8cf4d981" absoluteBounds="1.6400000000000001, 3.91, 1.7200000000000002, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="149b9a61-73bd-49ce-ba83-fbf1c4061bba" absoluteBounds="1.64, 4.3616910807291669, 1.7200000000000002, 0.44169108072916663" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementPropertyHasTypeConnector edgePoints="[(3.1875 : 4.90338216145833); (3.1875 : 5.75)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="817738b5-f315-4a74-9d4f-6ec5e726ddef">
+          <relativeChildShapes />
+          <nodes>
+            <configurationSectionShapeMoniker Id="7864333f-a552-4016-a64d-d849e60d609b" />
+            <configurationElementShapeMoniker Id="5451e7c5-6a40-48b3-8b03-45860edd7b70" />
+          </nodes>
+        </elementPropertyHasTypeConnector>
+      </nestedChildShapes>
+    </configurationSectionShape>
+    <configurationSectionGroupShape Id="cb3cab92-db74-406d-a37f-8a69c7758863" absoluteBounds="1.25, 1.25, 1.875, 1.2110807291666668" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionGroupMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/HangfireStorage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b90bb1f0-bd8f-4f7a-9967-d375103db5c1" absoluteBounds="1.265, 1.6600000000000001, 1.8450000000000002, 0.44169108072916663" name="ConfigurationSectionProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f13b50c0-30dc-42cc-9f13-42f568a8e6a5" absoluteBounds="1.265, 2.1116910807291669, 1.8450000000000002, 0.2493896484375" name="ConfigurationSectionGroupProperties" titleTextColor="Black" itemTextColor="Black" />
+        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(2.375 : 2.46108072916667); (2.375 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
+          <nodes>
+            <configurationSectionGroupShapeMoniker Id="cb3cab92-db74-406d-a37f-8a69c7758863" />
+            <configurationSectionShapeMoniker Id="7864333f-a552-4016-a64d-d849e60d609b" />
+          </nodes>
+        </configurationSectionPropertyHasConfigurationSectionConnector>
+      </nestedChildShapes>
+    </configurationSectionGroupShape>
+    <configurationElementShape Id="5451e7c5-6a40-48b3-8b03-45860edd7b70" absoluteBounds="3, 5.75, 2, 1.5956835937499996" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationElementMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/RedisStorageOptions" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c177a18d-c070-4a17-965e-a6d00e645560" absoluteBounds="3.015, 6.16, 1.9700000000000002, 0.82629394531250011" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e5f98a0b-7c94-4a90-8799-4517c23e560d" absoluteBounds="3.015, 6.9962939453125, 1.9700000000000002, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationElementShape>
+  </nestedChildShapes>
+</minimalLanguageDiagram>
