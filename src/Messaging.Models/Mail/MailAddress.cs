@@ -1,8 +1,5 @@
-﻿namespace Apexnet.Dispatch.Api.Mail
+﻿namespace Apexnet.Messaging.Mail
 {
-    using Apexnet.Dispatch.Api.Annotations;
-
-    [UsedImplicitly]
     public class MailAddress
     {
         public string Address { get; set; }

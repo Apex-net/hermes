@@ -8,8 +8,8 @@
     <ProjectGuid>{58A100CE-CC7E-43BF-A054-D28648F092AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JobQueue.Configuration</RootNamespace>
-    <AssemblyName>JobQueue.Configuration</AssemblyName>
+    <RootNamespace>Apexnet.JobQueue</RootNamespace>
+    <AssemblyName>Apexnet.JobQueue.Configuration</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

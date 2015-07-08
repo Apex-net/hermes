@@ -9,12 +9,11 @@ namespace Apexnet.Dispatch.Api.App_Start
     using System.Web;
     using System.Web.Mvc;
     using System.Web.WebPages;
-    using Common.Annotations;
     using RazorGenerator.Mvc;
 
     public static class RazorGeneratorMvcStart
     {
-        [UsedImplicitly]
+        // ReSharper disable UnusedMember.Global
         public static void Start()
         {
             var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly)
@@ -27,5 +26,8 @@ namespace Apexnet.Dispatch.Api.App_Start
             // StartPage lookups are done by WebPages. 
             VirtualPathFactoryManager.RegisterVirtualPathFactory(engine);
         }
+
+        // ReSharper restore UnusedMember.Global
+        ////
     }
 }

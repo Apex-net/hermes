@@ -1,16 +1,16 @@
 ﻿namespace Apexnet.Dispatch.Api
 {
     using System;
-    using Apexnet.Dispatch.Api.Annotations;
+    using System.Linq.Expressions;
     using Apexnet.JobQueue;
     using Newtonsoft.Json;
 
-    [UsedImplicitly]
-    public class ScheduledMessage : IScheduled
+    public class Enqueued : IEnqueued
     {
         [JsonIgnore]
         public Guid Id { get; set; }
 
-        public DateTimeOffset Schedule { get; set; }
+        [JsonIgnore]
+        public Expression<Action> Job { get; private set; }
     }
 }

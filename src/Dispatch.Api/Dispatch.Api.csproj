@@ -161,16 +161,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Dispatch.Api.dll" />
-    <Content Include="bin\Dispatch.Api.pdb" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
-    <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
-    <Content Include="bin\System.Web.Http.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.xml" />
-    <Content Include="bin\System.Web.Http.xml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -186,7 +176,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ScheduledBundleJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,7 +184,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Dispatch.Api.dll.config" />
     <Content Include="packages.config" />
     <Content Include="bin\Models\AgendaModel.ssdl" />
     <Content Include="bin\Models\AgendaModel.msl" />
@@ -218,6 +206,14 @@
     <ProjectReference Include="..\Dispatch.Api.Models\Dispatch.Api.Models.csproj">
       <Project>{37814798-14b0-4e08-82a0-66a5b96176c1}</Project>
       <Name>Dispatch.Api.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dispatch.Jobs\Dispatch.Jobs.csproj">
+      <Project>{5034eb74-2094-4ae9-8ce6-10aa10bde37c}</Project>
+      <Name>Dispatch.Jobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JobQueue.Models\JobQueue.Models.csproj">
+      <Project>{7719c1a0-5458-4295-a8ed-65e2d08116a6}</Project>
+      <Name>JobQueue.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\JobQueue\JobQueue.csproj">
       <Project>{AA2614BF-1E96-4419-B25B-B101A31F6F17}</Project>

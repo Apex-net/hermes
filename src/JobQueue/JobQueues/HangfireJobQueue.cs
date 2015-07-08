@@ -3,8 +3,20 @@
     using System;
     using Hangfire;
 
-    public class HangfireJobQueue<TScheduled> : IJobQueue
+    public class HangfireJobQueue<TEnqueued, TScheduled> : IJobQueue
+        where TEnqueued : IEnqueued
+        where TScheduled : IScheduled
     {
+        public IEnqueued Enqueue(IQueueable queueable)
+        {
+            var jobId = BackgroundJob.Enqueue(queueable.Job);
+
+            var result = (IEnqueued)Activator.CreateInstance(typeof(TEnqueued));
+            result.Id = Guid.Parse(jobId);
+
+            return result;
+        }
+
         public IScheduled Schedule(ISchedulable schedulable)
         {
             var jobId = BackgroundJob.Schedule(schedulable.Job, schedulable.Schedule);

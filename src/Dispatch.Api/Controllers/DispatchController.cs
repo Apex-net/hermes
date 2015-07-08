@@ -1,25 +1,29 @@
 ﻿namespace Apexnet.Dispatch.Api.Controllers
 {
     using System.Web.Http;
-    using Apexnet.Dispatch.Api.Bundle;
-    using Apexnet.Dispatch.Api.Models;
+    using Apexnet.Dispatch.Jobs;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
-    using Common.Annotations;
 
     public class DispatchController : ApiController
     {
         private readonly IJobQueue messageJobQueue;
 
-        [UsedImplicitly]
+        #region TODO: replace with IoC container
+
+        // ReSharper disable UnusedMember.Global
         public DispatchController()
             : this(null)
         {
         }
 
+        // ReSharper restore UnusedMember.Global
+        ////
+        #endregion
+
         private DispatchController(IJobQueue messageJobQueue)
         {
-            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<ScheduledMessage>();
+            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<Enqueued, Scheduled>();
         }
 
         public IHttpActionResult Post([FromBody] ScheduledBundle bundle)

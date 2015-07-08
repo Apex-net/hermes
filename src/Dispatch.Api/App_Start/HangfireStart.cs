@@ -9,19 +9,18 @@ namespace Apexnet.Dispatch.Api.App_Start
     using System.Linq;
     using Apexnet.Dispatch.Api.Properties;
     using Apexnet.JobQueue.JobStorages.Hangfire;
-    using Common.Annotations;
     using Hangfire;
     using Owin;
 
     public class HangfireStart
     {
-        private static readonly IHangfireJobStorage[] HangfireJobStorages =
+        private static readonly IHangfireJobStorage[] HangfireJobStorages = 
         {
             new HangfireRedisStorage("hangfire-redis"), 
             new HangfireMemoryStorage("hangfire-memory")
         };
 
-        [UsedImplicitly]
+        // ReSharper disable UnusedMember.Global
         public void Configuration(IAppBuilder app)
         {
             ConfigureEnabledHangfireJobStorage(Settings.Default.JobStorageName);
@@ -32,6 +31,8 @@ namespace Apexnet.Dispatch.Api.App_Start
             app.UseHangfireServer();
         }
 
+        // ReSharper restore UnusedMember.Global
+        ////
         #region /// internal ///////////////////////////////////////////////////
 
         private static void ConfigureEnabledHangfireJobStorage(string configuredStorageName)

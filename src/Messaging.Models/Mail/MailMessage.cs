@@ -1,10 +1,8 @@
-﻿namespace Apexnet.Dispatch.Api.Mail
+﻿namespace Apexnet.Messaging.Mail
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using Apexnet.Dispatch.Api.Annotations;
 
-    [UsedImplicitly]
     public class MailMessage
     {
         public MailMessage()

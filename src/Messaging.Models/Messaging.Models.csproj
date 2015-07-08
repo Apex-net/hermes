@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37814798-14B0-4E08-82A0-66A5B96176C1}</ProjectGuid>
+    <ProjectGuid>{F83DB7A9-DF28-4C13-A437-FDD691AB0DA9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Apexnet.Dispatch.Api</RootNamespace>
-    <AssemblyName>Apexnet.Dispatch.Api.Models</AssemblyName>
+    <RootNamespace>Apexnet.Messaging</RootNamespace>
+    <AssemblyName>Apexnet.Messaging.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>1236a5f2</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>7539f53c</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,24 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enqueued.cs" />
-    <Compile Include="ScheduledBundle.cs" />
+    <Compile Include="Mail\MailAddress.cs" />
+    <Compile Include="Mail\MailMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scheduled.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\JobQueue.Models\JobQueue.Models.csproj">
-      <Project>{7719c1a0-5458-4295-a8ed-65e2d08116a6}</Project>
-      <Name>JobQueue.Models</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Messaging.Models\Messaging.Models.csproj">
-      <Project>{f83db7a9-df28-4c13-a437-fdd691ab0da9}</Project>
-      <Name>Messaging.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />

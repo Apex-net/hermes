@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AA2614BF-1E96-4419-B25B-B101A31F6F17}</ProjectGuid>
+    <ProjectGuid>{14F1BDCA-D398-489C-AA01-CBC59736403B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Apexnet.JobQueue</RootNamespace>
-    <AssemblyName>Apexnet.JobQueue</AssemblyName>
+    <RootNamespace>Apexnet.Messaging</RootNamespace>
+    <AssemblyName>Apexnet.Messaging</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>92fa04ee</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>139813fa</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -63,28 +63,12 @@
       <HintPath>..\packages\Apexnet.Agenda.PhotoUrl.1.0.1\lib\net45\Esse3PhotoUrl.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Hangfire.Core, Version=1.4.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Core.1.4.3\lib\net45\Hangfire.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Hangfire.MemoryStorage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.MemoryStorage.1.0.0.0\lib\net45\Hangfire.MemoryStorage.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Hangfire.Redis.StackExchange, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Redis.SE.1.4.0\lib\Hangfire.Redis.StackExchange.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
@@ -95,13 +79,8 @@
       <HintPath>..\packages\Serialize.Linq.1.1.4\lib\net45\Serialize.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.0.414\lib\net45\StackExchange.Redis.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
@@ -147,7 +126,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+    <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0.3\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -156,27 +135,28 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="JobStorages\Hangfire\IHangfireJobStorage.cs" />
-    <Compile Include="JobStorages\Hangfire\HangfireMemoryStorage.cs" />
-    <Compile Include="JobStorages\Hangfire\HangfireRedisStorage.cs" />
+    <Compile Include="Mail\IMailMessageSender.cs" />
+    <Compile Include="Mail\MailMessageSender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JobQueues\HangfireJobQueue.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
+    <None Include="bin\Models\AgendaModel.csdl" />
+    <None Include="bin\Models\AgendaModel.msl" />
+    <None Include="bin\Models\AgendaModel.ssdl" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="bin\Debug\Apexnet.Messaging.dll" />
+    <Content Include="bin\Debug\Apexnet.Messaging.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JobQueue.Configuration\JobQueue.Configuration.csproj">
-      <Project>{58a100ce-cc7e-43bf-a054-d28648f092ac}</Project>
-      <Name>JobQueue.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\JobQueue.Models\JobQueue.Models.csproj">
-      <Project>{7719c1a0-5458-4295-a8ed-65e2d08116a6}</Project>
-      <Name>JobQueue.Models</Name>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Messaging.Models\Messaging.Models.csproj">
+      <Project>{f83db7a9-df28-4c13-a437-fdd691ab0da9}</Project>
+      <Name>Messaging.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
