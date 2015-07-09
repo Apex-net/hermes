@@ -10,6 +10,8 @@ namespace Apexnet.Dispatch.Api.App_Start
     using Apexnet.Dispatch.Api.Properties;
     using Apexnet.JobQueue.JobStorages.Hangfire;
     using Hangfire;
+    using Hangfire.Logging;
+    using Hangfire.Logging.LogProviders;
     using Owin;
 
     public class HangfireStart
@@ -29,6 +31,8 @@ namespace Apexnet.Dispatch.Api.App_Start
             app.UseHangfireDashboard("/jobs");
 
             app.UseHangfireServer();
+
+            LogProvider.SetCurrentLogProvider(new ElmahLogProvider(LogLevel.Info));
         }
 
         // ReSharper restore UnusedMember.Global
