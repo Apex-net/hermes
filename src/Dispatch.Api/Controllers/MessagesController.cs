@@ -1,20 +1,20 @@
 ﻿namespace Apexnet.Dispatch.Api.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Http;
     using System.Web.Http.Description;
-    using Apexnet.Dispatch.Jobs;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
 
-    public class DispatchController : ApiController
+    public class MessagesController : ApiController
     {
         private readonly IJobQueue messageJobQueue;
 
         #region TODO: replace with IoC container
 
         // ReSharper disable UnusedMember.Global
-        public DispatchController()
+        public MessagesController()
             : this(null)
         {
         }
@@ -23,18 +23,16 @@
         ////
         #endregion
 
-        private DispatchController(IJobQueue messageJobQueue)
+        private MessagesController(IJobQueue messageJobQueue)
         {
             this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<Enqueued, Scheduled>();
         }
 
-        [ResponseType(typeof(Scheduled))]
-        public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
+        public IHttpActionResult Delete(Guid id)
         {
-            var job = ScheduledBundleJob.FromScheduledBundle(bundle);
-            var scheduled = this.messageJobQueue.Schedule(job);
+            var result = this.messageJobQueue.Delete(id);
 
-            return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
+            return result ? (IHttpActionResult)this.Ok() : this.NotFound();
         }
     }
 }

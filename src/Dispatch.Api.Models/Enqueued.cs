@@ -5,6 +5,7 @@
     using Apexnet.JobQueue;
     using Newtonsoft.Json;
 
+    // ReSharper disable ClassNeverInstantiated.Global
     public class Enqueued : IEnqueued
     {
         [JsonIgnore]
@@ -13,4 +14,6 @@
         [JsonIgnore]
         public Expression<Action> Job { get; private set; }
     }
+
+    // ReSharper restore ClassNeverInstantiated.Global
 }

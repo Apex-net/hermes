@@ -27,5 +27,10 @@
 
             return result;
         }
+
+        public bool Delete(Guid id)
+        {
+            return BackgroundJob.Delete(id.ToString());
+        }
     }
 }
