@@ -169,13 +169,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\Apexnet.Messaging.dll" />
-    <Content Include="bin\Debug\Apexnet.Messaging.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Messaging.Models\Messaging.Models.csproj">
       <Project>{f83db7a9-df28-4c13-a437-fdd691ab0da9}</Project>
