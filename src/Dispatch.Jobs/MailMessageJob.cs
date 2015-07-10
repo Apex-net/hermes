@@ -22,9 +22,9 @@
             }
         }
 
-        public static MailMessageJob FromMailMessage(MailMessage bundle)
+        public static MailMessageJob FromMailMessage(MailMessage message)
         {
-            return new MailMessageJob(bundle);
+            return new MailMessageJob(message);
         }
 
         // ReSharper disable MemberCanBePrivate.Global

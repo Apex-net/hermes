@@ -145,7 +145,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="PushNotification\ApexnetPushNotificationSender.cs" />
+    <Compile Include="Push\ApexnetPushNotificationSender.cs" />
+    <Compile Include="Push\IApexnetPushNotificationSender.cs" />
     <Compile Include="Web References\ApexnetPushServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

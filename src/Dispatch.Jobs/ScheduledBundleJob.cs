@@ -6,6 +6,7 @@
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
     using Apexnet.Messaging.Mail;
+    using Apexnet.Messaging.Push;
     using Common.Utils;
 
     public class ScheduledBundleJob : ISchedulable
@@ -49,14 +50,21 @@
             var queue = new HangfireJobQueue<Enqueued, Scheduled>();
 
             bundle.MailMessages.Each((message, i) => Send(message, queue));
+            bundle.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
         }
 
         // ReSharper restore MemberCanBePrivate.Global
         ////
         private static void Send(MailMessage mailMessage, IJobQueue queue)
         {
-            var messageJob = MailMessageJob.FromMailMessage(mailMessage);
-            queue.Enqueue(messageJob);
+            var job = MailMessageJob.FromMailMessage(mailMessage);
+            queue.Enqueue(job);
+        }
+
+        private static void Send(ApexnetPushNotification pushNotification, IJobQueue queue)
+        {
+            var job = ApexnetPushNotificationJob.FromApexnetPushNotification(pushNotification);
+            queue.Enqueue(job);
         }
     }
 }
