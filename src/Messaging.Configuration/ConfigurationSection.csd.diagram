@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<minimalLanguageDiagram dslVersion="1.0.0.0" Id="808dba36-f80a-4c7f-a4b7-e7588d460791" absoluteBounds="0, 0, 11, 8.5" name="ConfigurationSection">
+  <configurationSectionModelMoniker Id="d0ed9acb-0435-4532-afdd-b5115bc4d562" />
+  <nestedChildShapes>
+    <configurationSectionShape Id="cbece5cf-ee0c-4096-9820-7ce4c9b18d3d" absoluteBounds="0.5, 1.375, 2.75, 1.211080729166667" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/ApexnetPushServiceReference" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5987a8ff-e68d-415a-ae6b-a9bf6b38d1b3" absoluteBounds="0.515, 1.7850000000000001, 2.7199999999999998, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8941b564-f6ec-43f7-aacb-793e81399930" absoluteBounds="0.515, 2.2366910807291669, 2.7199999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationSectionShape>
+  </nestedChildShapes>
+</minimalLanguageDiagram>

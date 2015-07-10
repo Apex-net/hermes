@@ -81,6 +81,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.EnterpriseServices" />
@@ -134,6 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApexnetPushServiceReference\Notificatore.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
@@ -171,6 +173,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Messaging.Configuration\Messaging.Configuration.csproj">
+      <Project>{9ae784f6-81ee-459b-a761-e68585ce920c}</Project>
+      <Name>Messaging.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Messaging.Models\Messaging.Models.csproj">
       <Project>{f83db7a9-df28-4c13-a437-fdd691ab0da9}</Project>
       <Name>Messaging.Models</Name>

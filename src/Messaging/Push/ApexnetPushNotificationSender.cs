@@ -20,7 +20,7 @@
 
         private ApexnetPushNotificationSender(Notificatore notificatore)
         {
-            this.notificatore = notificatore ?? new Notificatore();
+            this.notificatore = notificatore ?? Notificatore.InstanceFromCustomConfiguration();
         }
 
         public void Send(ApexnetPushNotification notification)
