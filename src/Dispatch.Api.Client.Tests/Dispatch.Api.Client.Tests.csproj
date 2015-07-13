@@ -43,12 +43,12 @@
       <HintPath>..\packages\Apexnet.Agenda.Model.1.0.1\lib\net45\Agenda.Model.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Apexnet.Dispatch.Api.Client, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Apexnet.Dispatch.Api.Client.0.2.0\lib\net45\Apexnet.Dispatch.Api.Client.dll</HintPath>
+    <Reference Include="Apexnet.Dispatch.Api.Client">
+      <HintPath>..\packages\Apexnet.Dispatch.Api.Client.0.2.1\lib\net45\Apexnet.Dispatch.Api.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Apexnet.Dispatch.Api.Client.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Apexnet.Dispatch.Api.Client.0.2.0\lib\net45\Apexnet.Dispatch.Api.Client.Configuration.dll</HintPath>
+    <Reference Include="Apexnet.Dispatch.Api.Client.Configuration">
+      <HintPath>..\packages\Apexnet.Dispatch.Api.Client.0.2.1\lib\net45\Apexnet.Dispatch.Api.Client.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Apexnet.Dispatch.Api.Models, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
