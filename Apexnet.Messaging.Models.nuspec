@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Apexnet.Messaging.Models</id>
+        <version>0.1.1</version>
+        <authors>Ali Servet Donmez</authors>
+        <projectUrl>https://github.com/apex-net/fabio</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Messaging Models Library</description>
+    </metadata>
+    <files>
+        <file src="src\Messaging.Models\bin\Release\Apexnet.Messaging.Models.dll" target="lib\net45\Apexnet.Messaging.Models.dll" />
+    </files>
+</package>
