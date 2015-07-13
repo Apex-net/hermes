@@ -16,8 +16,8 @@
 
         public DateTimeOffset? Schedule { get; set; }
 
-        public IEnumerable<MailMessage> MailMessages { get; set; }
+        public ICollection<MailMessage> MailMessages { get; set; }
 
-        public IEnumerable<ApexnetPushNotification> ApexnetPushNotifications { get; set; }
+        public ICollection<ApexnetPushNotification> ApexnetPushNotifications { get; set; }
     }
 }

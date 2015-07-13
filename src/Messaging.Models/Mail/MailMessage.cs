@@ -14,11 +14,11 @@
 
         public MailAddress From { get; set; }
 
-        public IEnumerable<MailAddress> To { get; set; }
+        public ICollection<MailAddress> To { get; set; }
 
-        public IEnumerable<MailAddress> Cc { get; set; }
+        public ICollection<MailAddress> Cc { get; set; }
 
-        public IEnumerable<MailAddress> Bcc { get; set; }
+        public ICollection<MailAddress> Bcc { get; set; }
 
         public string Subject { get; set; }
 
