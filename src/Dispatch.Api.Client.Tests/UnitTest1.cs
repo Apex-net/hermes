@@ -6,7 +6,7 @@
     using Apexnet.Messaging.Push;
     using Xunit;
 
-    public class UnitTest1 : UnitTest1Base
+    public class UnitTest1
     {
         private readonly DispatchApiClient client = new DispatchApiClient();
 
@@ -42,11 +42,11 @@
 
         private static MailMessage NewMailMessage()
         {
-            var mailMessage = new MailMessage { From = Ali };
-            mailMessage.To.Add(Fabio);
-            mailMessage.Cc.Add(Stefano);
-            mailMessage.Cc.Add(Andrea);
-            mailMessage.Bcc.Add(Ali);
+            var mailMessage = new MailMessage { From = AddressBook.Ali };
+            mailMessage.To.Add(AddressBook.Fabio);
+            mailMessage.Cc.Add(AddressBook.Stefano);
+            mailMessage.Cc.Add(AddressBook.Andrea);
+            mailMessage.Bcc.Add(AddressBook.Ali);
             mailMessage.Subject = "Ciao mondo";
             mailMessage.Body = "<h1>Titolo</h1>";
             mailMessage.IsBodyHtml = true;
