@@ -26,7 +26,7 @@
         {
             this.httpService = httpService ??
                                new RestHttpService(
-                                   new DefaultHttpClient("http://localhost/Dispatch.Api/api/", "dispatch", "0.1.0"));
+                                   new DefaultHttpClient("http://localhost/Dispatch.Api/api/", "dispatch", "0"));
         }
 
         public Task<Scheduled> Send(ScheduledBundle scheduledBundle)
