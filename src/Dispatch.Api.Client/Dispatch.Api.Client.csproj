@@ -81,6 +81,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
@@ -146,6 +147,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dispatch.Api.Client.Configuration\Dispatch.Api.Client.Configuration.csproj">
+      <Project>{f75da666-3792-4a09-ac97-d0b9fb666a4e}</Project>
+      <Name>Dispatch.Api.Client.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dispatch.Api.Models\Dispatch.Api.Models.csproj">
       <Project>{37814798-14b0-4e08-82a0-66a5b96176c1}</Project>
       <Name>Dispatch.Api.Models</Name>

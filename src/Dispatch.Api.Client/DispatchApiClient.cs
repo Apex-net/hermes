@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Apexnet.Dispatch.Api.Client.Configuration;
     using Common.Data_Access.Services;
     using Common.Data_Transfer;
     using Common.Protocols;
@@ -25,8 +26,7 @@
         private DispatchApiClient(IRestHttpClientAsync httpService)
         {
             this.httpService = httpService ??
-                               new RestHttpService(
-                                   new DefaultHttpClient("http://localhost/Dispatch.Api/api/", "dispatch", "0"));
+                               new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "0"));
         }
 
         public Task<Scheduled> Send(ScheduledBundle scheduledBundle)
