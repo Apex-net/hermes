@@ -9,6 +9,6 @@
         <description>JobQueue Models Library</description>
     </metadata>
     <files>
-        <file src="src\JobQueue.Models\bin\Release\Apexnet.JobQueue.Models.dll" target="lib\net45\Apexnet.JobQueue.Models.dll" />
+        <file src="..\..\src\JobQueue.Models\bin\Release\Apexnet.JobQueue.Models.dll" target="lib\net45\Apexnet.JobQueue.Models.dll" />
     </files>
 </package>

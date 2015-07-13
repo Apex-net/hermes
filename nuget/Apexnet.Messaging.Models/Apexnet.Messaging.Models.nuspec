@@ -9,6 +9,6 @@
         <description>Messaging Models Library</description>
     </metadata>
     <files>
-        <file src="src\Messaging.Models\bin\Release\Apexnet.Messaging.Models.dll" target="lib\net45\Apexnet.Messaging.Models.dll" />
+        <file src="..\..\src\Messaging.Models\bin\Release\Apexnet.Messaging.Models.dll" target="lib\net45\Apexnet.Messaging.Models.dll" />
     </files>
 </package>

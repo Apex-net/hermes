@@ -13,6 +13,6 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="src\Dispatch.Api.Models\bin\Release\Apexnet.Dispatch.Api.Models.dll" target="lib\net45\Apexnet.Dispatch.Api.Models.dll" />
+        <file src="..\..\src\Dispatch.Api.Models\bin\Release\Apexnet.Dispatch.Api.Models.dll" target="lib\net45\Apexnet.Dispatch.Api.Models.dll" />
     </files>
 </package>
