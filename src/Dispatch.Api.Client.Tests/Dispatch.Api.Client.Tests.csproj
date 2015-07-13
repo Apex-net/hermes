@@ -71,8 +71,8 @@
       <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Common, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Apexnet.Agenda.Common.1.2.0\lib\net45\Common.dll</HintPath>
+    <Reference Include="Common, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apexnet.Agenda.Common.1.3.0\lib\net45\Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">

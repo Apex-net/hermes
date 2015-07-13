@@ -27,6 +27,17 @@
             Assert.Equal(schedule, scheduled.Schedule);
         }
 
+        [Fact]
+        public async void TestMethod2()
+        {
+            var id = Guid.Parse("025a3a20-3514-42a5-ac66-f01084539d87");
+
+            var result = await this.client.Cancel(id)
+                                   .ConfigureAwait(false);
+
+            Assert.True(result);
+        }
+
         #region /// internal ///////////////////////////////////////////////////
 
         private static ApexnetPushNotification CreateNotification()

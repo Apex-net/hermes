@@ -1,5 +1,6 @@
 ﻿namespace Apexnet.Dispatch.Api
 {
+    using System;
     using System.Threading.Tasks;
     using Common.Data_Access.Services;
     using Common.Data_Transfer;
@@ -31,6 +32,11 @@
         public Task<Scheduled> Send(ScheduledBundle scheduledBundle)
         {
             return this.httpService.CreateAsync<ScheduledBundle, Scheduled>("dispatch", scheduledBundle, null);
+        }
+
+        public Task<bool> Cancel(Guid id)
+        {
+            return this.httpService.DeleteAsync(string.Format("messages/{0}", id));
         }
     }
 }
