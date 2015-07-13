@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Apexnet.JobQueue.Models</id>
+        <version>0.1.0</version>
+        <authors>Ali Servet Donmez</authors>
+        <projectUrl>https://github.com/apex-net/fabio</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>JobQueue Models Library</description>
+    </metadata>
+    <files>
+        <file src="src\JobQueue.Models\bin\Release\Apexnet.JobQueue.Models.dll" target="lib\net45\Apexnet.JobQueue.Models.dll" />
+    </files>
+</package>
