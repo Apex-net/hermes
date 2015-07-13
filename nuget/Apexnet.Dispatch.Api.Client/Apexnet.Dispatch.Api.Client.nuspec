@@ -13,6 +13,8 @@
         </dependencies>
     </metadata>
     <files>
+        <file src="content\app.config.transform" target="content\app.config.transform" />
+        <file src="content\Web.config.transform" target="content\Web.config.transform" />
         <file src="..\..\src\Dispatch.Api.Client.Configuration\bin\Release\Apexnet.Dispatch.Api.Client.Configuration.dll" target="lib\net45\Apexnet.Dispatch.Api.Client.Configuration.dll" />
         <file src="..\..\src\Dispatch.Api.Client\bin\Release\Apexnet.Dispatch.Api.Client.dll" target="lib\net45\Apexnet.Dispatch.Api.Client.dll" />
     </files>

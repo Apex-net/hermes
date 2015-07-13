@@ -1,0 +1,6 @@
+<configuration>
+	<configSections>
+		<section name="dispatchApi" type="Apexnet.Dispatch.Api.Client.Configuration.DispatchApi, Apexnet.Dispatch.Api.Client.Configuration, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+ 	</configSections>
+ 	<dispatchApi xmlns="urn:Apexnet.Dispatch.Api.Client.Configuration" url="http://example.com/dispatch/api/" />
+</configuration>
