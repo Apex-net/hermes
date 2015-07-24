@@ -4,7 +4,7 @@
         <id>Apexnet.Dispatch.Api.Models</id>
         <version>0.1.0</version>
         <authors>Ali Servet Donmez</authors>
-        <projectUrl>https://github.com/apex-net/fabio</projectUrl>
+        <projectUrl>https://github.com/apex-net/hermes</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Dispatch API Models Library</description>
         <dependencies>
