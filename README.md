@@ -50,7 +50,7 @@ Complete definition for `redisStorage` is:
 
 ```xml
   <HangfireStorage xmlns="urn:Apexnet.JobQueue.Configuration">
-    <redisStorage xmlns="urn:Apexnet.JobQueue.Configuration" connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}">
+    <redisStorage connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}">
       <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
     </redisStorage>
   </HangfireStorage>
@@ -61,7 +61,7 @@ Complete definition for `redisStorage` is:
 | Setting | Description |
 |--- |---
 | `connectionString`    | the only **mandatory** configuration. Read [official documentation](http://docs.hangfire.io/en/latest/configuration/using-redis.html#configuration) for a complete list of connection string formats.
-| `redisStorageOptions` | can be omitted entirely if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
+| `redisStorageOptions` | can be omitted entirely if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes. In fact default `Web.config` doesn't include this section for this reason.
 | `db`                  | redis db number (default: `0`).
 | `invisibilityTimeout` | a time span value (default: 30 minutes).
 | `prefix`              | unique redis environment prefix (default: `hangfire:`)
