@@ -46,28 +46,22 @@ Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`
 
 ###### Redis Storage
 
-`redisStorage` section must be configured correctly:
+Complete definition for `redisStorage` is:
 
 ```xml
   <HangfireStorage xmlns="urn:Apexnet.JobQueue.Configuration">
-    <redisStorage connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}"/>
+    <redisStorage xmlns="urn:Apexnet.JobQueue.Configuration" connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}">
+      <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
+    </redisStorage>
   </HangfireStorage>
 ```
 
 :information_source: `{HANGFIRE_STORAGE_REDIS_CONNECTION}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
 
-Complete definition for `redisStorage` is:
-
-```xml
-<redisStorage xmlns="urn:Apexnet.JobQueue.Configuration" connectionString="...">
-  <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
-</redisStorage>
-```
-
 | Setting | Description |
 |--- |---
 | `connectionString`    | the only **mandatory** configuration. Read [official documentation](http://docs.hangfire.io/en/latest/configuration/using-redis.html#configuration) for a complete list of connection string formats.
-| `redisStorageOptions` | can be omitted if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
+| `redisStorageOptions` | can be omitted entirely if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
 | `db`                  | redis db number (default: `0`).
 | `invisibilityTimeout` | a time span value (default: 30 minutes).
 | `prefix`              | unique redis environment prefix (default: `hangfire:`)
