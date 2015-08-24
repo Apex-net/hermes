@@ -19,8 +19,8 @@ Server
 ### Configuration
 
 0. Open `Web.config` file inside IIS application folder you previously created using a plain text editor
-0. Configure [mandatory settings](#Mandatory-Settings)
-0. Configure [optional settings](#Optional-Settings)
+0. Configure [mandatory settings](#mandatory-settings)
+0. Configure [optional settings](#optional-settings)
 
 #### Mandatory Settings
 
@@ -38,7 +38,7 @@ The only mandatory configuration is setting available storage option via `JobSto
 
 Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`. As default `hangfire-redis` is selected.
 
-:warning: `hangfire-redis` storage option requires additional configurations. See [redis storage](#Redis-Storage) section.
+:warning: `hangfire-redis` storage option requires additional configurations. See [redis storage](#redis-storage) section.
 
 #### Optional Settings
 
