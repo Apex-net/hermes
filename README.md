@@ -80,9 +80,33 @@ No configuration is necessary.
 
 ###### E-mail Notifications
 
+Configure `smtp` settings only if you intend to send e-mail notifications using hermes:
 
+```xml
+    <mailSettings>
+      <smtp from="{SMTP_FROM}">
+        <network defaultCredentials="false" host="{SMTP_HOST}" port="{SMTP_PORT}" userName="{SMTP_USERNAME}" password="{SMTP_PASSWORD}" enableSsl="{SMTP_SSL}"/>
+      </smtp>
+    </mailSettings>
+```
+
+:information_source: `{SMTP_*}` are utility placeholders that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+
+[Read MSDN](https://msdn.microsoft.com/en-us/library/ms164240.aspx) for a complete definition of this configuration setting.
 
 ###### Apex-net Push Notifications
+
+Configure `apexnetPushServiceReference` settings only if you intend to send push notifications using Apex-net proprietary push notification service. (Installed and configured separately:)
+
+```xml
+  <apexnetPushServiceReference url="{APEXNET_PUSH_SERVICE_URL}" xmlns="urn:Apexnet.Messaging.Configuration"/>
+```
+
+:information_source: `{APEXNET_PUSH_SERVICE_URL}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+
+| Setting | Description |
+|--- |---
+| `url`    | the only **mandatory** configuration that is the base URL for Apex-net Push Notification REST APIs
 
 
 Client SDK
