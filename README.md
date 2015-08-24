@@ -13,7 +13,7 @@ Server
 0. Go to [releases](https://github.com/Apex-net/hermes/releases)
 0. Download latest version of `dispatch/api/v*.7z`
 0. Extract contents of `DispatchApi-v*.7z`
-0. Convert extracted folder to Application in IIS
+0. Convert extracted folder to Application in IIS (Target framework: **.NET 4.5**)
 
 
 ### Configuration
