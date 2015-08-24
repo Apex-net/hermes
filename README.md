@@ -46,13 +46,29 @@ Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`
 
 ###### Redis Storage
 
-`HangfireStorage` must be configured correctly:
+`redisStorage` section must be configured correctly:
 
 ```xml
   <HangfireStorage xmlns="urn:Apexnet.JobQueue.Configuration">
     <redisStorage connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}"/>
   </HangfireStorage>
 ```
+
+:information_source: `{HANGFIRE_STORAGE_REDIS_CONNECTION}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+
+Complete definition for `redisStorage` is:
+
+```xml
+<redisStorage connectionString="">
+  <redisStorageOptions db="" invisibilityTimeout="" prefix=""/>
+</redisStorage>
+```
+
+* `connectionString` is mandatory if you decided to use redis as storage option. Read [official documentation](http://docs.hangfire.io/en/latest/configuration/using-redis.html#configuration) for connection string format.
+* `redisStorageOptions` can be omitted if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
+* `db` is redis db number (default: `0`).
+* `invisibilityTimeout` is a time span value (default: 30 minutes).
+* `prefix` is unique environment prefix (default: `hangfire:`)
 
 ###### Memory Storage
 
