@@ -59,20 +59,30 @@ Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`
 Complete definition for `redisStorage` is:
 
 ```xml
-<redisStorage connectionString="">
-  <redisStorageOptions db="" invisibilityTimeout="" prefix=""/>
+<redisStorage xmlns="urn:Apexnet.JobQueue.Configuration" connectionString="...">
+  <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
 </redisStorage>
 ```
 
-* `connectionString` is mandatory if you decided to use redis as storage option. Read [official documentation](http://docs.hangfire.io/en/latest/configuration/using-redis.html#configuration) for connection string format.
-* `redisStorageOptions` can be omitted if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
-* `db` is redis db number (default: `0`).
-* `invisibilityTimeout` is a time span value (default: 30 minutes).
-* `prefix` is unique environment prefix (default: `hangfire:`)
+| Setting | Description |
+|--- |---
+| `connectionString`    | the only **mandatory** configuration. Read [official documentation](http://docs.hangfire.io/en/latest/configuration/using-redis.html#configuration) for a complete list of connection string formats.
+| `redisStorageOptions` | can be omitted if you don't intend to customize none of `db`, `invisibilityTimeout`, or `prefix` attributes.
+| `db`                  | redis db number (default: `0`).
+| `invisibilityTimeout` | a time span value (default: 30 minutes).
+| `prefix`              | unique redis environment prefix (default: `hangfire:`)
 
 ###### Memory Storage
 
 No configuration is necessary.
+
+##### Notification Options
+
+###### E-mail Notifications
+
+
+
+###### Apex-net Push Notifications
 
 
 Client SDK
