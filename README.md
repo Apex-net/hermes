@@ -109,7 +109,7 @@ Given `<Base URI>` (e.g., `http://example.com/hermes`) where you configured IIS 
 
 #### Send an e-mail notification
 
-:information_source: Make sure;
+Make sure;
 
 * replacing `you@example.com` below with a valid e-mail address
 * replacing `<Base URI>` with where you configured IIS to serve Hermes server
@@ -137,6 +137,30 @@ curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Ty
   ]
 }' '<Base URI>/api/dispatch'
 ```
+
+#### Send a push notification
+
+:warning: This feature requires you have access to Apex-net proprietary push notification service!
+
+Make sure;
+
+* replacing `<Authentication key>`, `<Application key>` and `<Username>` below with a valid values
+* replacing `<Base URI>` with where you configured IIS to serve Hermes server
+* `Accept: application/vnd.dispatch+json; version=0` contains correct server version
+
+```bash
+curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Type: application/json; charset=utf-8' -d '{
+  "Schedule":"2000-01-01T00:00:00.0000000+00:00",
+  "ApexnetPushNotifications":[
+    {
+      "AuthKey":"<Authentication key>",
+      "AppKey":"<Application key>",
+      "UserName":"<Username>",
+      "Message":"If enabled, badge number should be 1. Have a nice day!",
+      "BadgeCount":1
+    }
+  ]
+}' '<Base URI>/api/dispatch'
 
 
 Client SDK
