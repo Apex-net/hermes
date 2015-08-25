@@ -132,7 +132,7 @@ curl -X "POST" "<Base URI>/api/dispatch" \
       },
       "To": [
         {
-          "Address": "s.teodorani@apexnet.it",
+          "Address": "you@example.com",
           "DisplayName": "What\'s your name?"
         }
       ],
