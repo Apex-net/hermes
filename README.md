@@ -109,7 +109,11 @@ Given `<Base URI>` (e.g., `http://example.com/hermes`) where you configured IIS 
 
 #### Send an e-mail notification
 
-:information_source: Make sure you at least replace `you@example.com` below with a valid e-mail address and replace `<Base URI>` with where you configured IIS to serve Hermes server:
+:information_source: Make sure;
+
+* replacing `you@example.com` below with a valid e-mail address
+* replacing `<Base URI>` with where you configured IIS to serve Hermes server
+* `Accept: application/vnd.dispatch+json; version=0` contains correct server version
 
 ```bash
 curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Type: application/json; charset=utf-8' -d '{
