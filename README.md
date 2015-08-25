@@ -116,26 +116,28 @@ Make sure;
 * `Accept: application/vnd.dispatch+json; version=0` contains correct server version
 
 ```bash
-curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Type: application/json; charset=utf-8' -d '{
-  "Schedule":"2000-01-01T00:00:00.0000000+00:00",
-  "MailMessages":[
+curl -X "POST" "<Base URI>/api/dispatch" \
+        -H "Accept: application/vnd.dispatch+json; version=0" \
+        -d $'{
+  "Schedule": "2000-01-01T00:00:00.0000000+00:00",
+  "MailMessages": [
     {
-      "From":{
-        "Address":"hermes@example.com",
-        "DisplayName":"Hermes Almighty"
+      "From": {
+        "Address": "hermes@example.com",
+        "DisplayName": "Hermes Almighty"
       },
-      "To":[
+      "To": [
         {
-          "Address":"you@example.com",
-          "DisplayName":"What's your name?"
+          "Address": "s.teodorani@apexnet.it",
+          "DisplayName": "What\'s your name?"
         }
-      ]
-      "Subject":"Aloha",
-      "Body":"<html><body><h1>It works!</h1></body></html>",
-      "IsBodyHtml":true
+      ],
+      "Subject": "Aloha",
+      "Body": "It works!",
+      "IsBodyHtml": false
     }
   ]
-}' '<Base URI>/api/dispatch'
+}'
 ```
 
 #### Send a push notification
