@@ -103,6 +103,38 @@ Configure `apexnetPushServiceReference` settings only if you intend to send push
 | `url`    | the only **mandatory** configuration that is the base URL for Apex-net Push Notification REST APIs
 
 
+### Verify Server Installation
+
+Given `<Base URI>` (e.g., `http://example.com/hermes`) where you configured IIS to serve Hermes server, default Hangfire dashboard should appear at `<Base URI>/jobs`.
+
+#### Send an e-mail notification
+
+:information_source: Make sure you at least replace `you@example.com` below with a valid e-mail address and replace `<Base URI>` with where you configured IIS to serve Hermes server:
+
+```bash
+curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Type: application/json; charset=utf-8' -d '{
+  "Schedule":"2000-01-01T00:00:00.0000000+00:00",
+  "MailMessages":[
+    {
+      "From":{
+        "Address":"hermes@example.com",
+        "DisplayName":"Hermes Almighty"
+      },
+      "To":[
+        {
+          "Address":"you@example.com",
+          "DisplayName":"What's your name?"
+        }
+      ]
+      "Subject":"Aloha",
+      "Body":"<html><body><h1>It works!</h1></body></html>",
+      "IsBodyHtml":true
+    }
+  ]
+}' '<Base URI>/api/dispatch'
+```
+
+
 Client SDK
 ----------
 
