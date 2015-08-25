@@ -38,7 +38,8 @@ The only mandatory configuration is setting available storage option via `JobSto
 
 Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`. As default `hangfire-redis` is selected.
 
-:warning: `hangfire-redis` storage option requires additional configurations. See [redis storage](#redis-storage) section.
+> :warning:
+> `hangfire-redis` storage option requires additional configurations. See [redis storage](#redis-storage) section.
 
 #### Optional Settings
 
@@ -56,7 +57,8 @@ Complete definition for `redisStorage` is:
   </HangfireStorage>
 ```
 
-:information_source: `{HANGFIRE_STORAGE_REDIS_CONNECTION}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+> :information_source:
+> `{HANGFIRE_STORAGE_REDIS_CONNECTION}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
 
 | Setting | Description |
 |--- |---
@@ -84,7 +86,8 @@ Configure `smtp` settings only if you intend to send e-mail notifications using 
     </mailSettings>
 ```
 
-:information_source: `{SMTP_*}` are utility placeholders that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+> :information_source:
+> `{SMTP_*}` are utility placeholders that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
 
 [Read MSDN](https://msdn.microsoft.com/en-us/library/ms164240.aspx) for a complete definition of this configuration setting.
 
@@ -96,7 +99,8 @@ Configure `apexnetPushServiceReference` settings only if you intend to send push
   <apexnetPushServiceReference url="{APEXNET_PUSH_SERVICE_URL}" xmlns="urn:Apexnet.Messaging.Configuration"/>
 ```
 
-:information_source: `{APEXNET_PUSH_SERVICE_URL}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
+> :information_source:
+> `{APEXNET_PUSH_SERVICE_URL}` is an utility placeholder that you could replace, for instance, using an automated script to configure various installations in a continuous integration server.
 
 | Setting | Description |
 |--- |---
@@ -142,7 +146,8 @@ curl -X "POST" "<Base URI>/api/dispatch" \
 
 #### Send a push notification
 
-:warning: This feature requires you have access to Apex-net proprietary push notification service!
+> :warning:
+> This feature requires you have access to Apex-net proprietary push notification service!
 
 Make sure;
 
@@ -176,4 +181,5 @@ Client SDK
 
 #### Usage
 
-_:construction_worker: This section is currently missing_
+> _:construction_worker:
+> This section is currently missing_
