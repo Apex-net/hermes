@@ -3,7 +3,6 @@ using WebActivatorEx;
 
 [assembly: PostApplicationStartMethod(typeof(RazorGeneratorMvcStart), "Start")]
 
-// ReSharper disable once CheckNamespace
 namespace Apexnet.JobQueue.App_Start
 {
     using System.Web;
@@ -13,7 +12,6 @@ namespace Apexnet.JobQueue.App_Start
 
     public static class RazorGeneratorMvcStart
     {
-        // ReSharper disable UnusedMember.Global
         public static void Start()
         {
             var engine = new PrecompiledMvcEngine(typeof(RazorGeneratorMvcStart).Assembly)
@@ -26,7 +24,5 @@ namespace Apexnet.JobQueue.App_Start
             // StartPage lookups are done by WebPages. 
             VirtualPathFactoryManager.RegisterVirtualPathFactory(engine);
         }
-        // ReSharper restore UnusedMember.Global
-        ////
     }
 }

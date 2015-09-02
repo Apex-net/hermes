@@ -27,14 +27,12 @@
             return new ApexnetPushNotificationJob(notification);
         }
 
-        // ReSharper disable MemberCanBePrivate.Global
+        //// ReSharper disable MemberCanBePrivate.Global
         public static void Send(ApexnetPushNotification notification)
         {
-            var sender = new ApexnetPushNotificationSender();
+            IApexnetPushNotificationSender sender = new ApexnetPushNotificationSender();
             sender.Send(notification);
         }
-
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
+        //// ReSharper restore MemberCanBePrivate.Global
     }
 }

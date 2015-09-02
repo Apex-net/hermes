@@ -9,14 +9,11 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public MailMessageSender()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private MailMessageSender(SmtpClient smtpClient)

@@ -4,6 +4,6 @@ namespace Apexnet.JobQueue
 
     public interface ISchedulable : IQueueable
     {
-        DateTimeOffset Schedule { get; set; }
+        DateTimeOffset Schedule { get; }
     }
 }

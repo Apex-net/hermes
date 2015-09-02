@@ -8,14 +8,11 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public ApexnetPushNotificationSender()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private ApexnetPushNotificationSender(Notificatore notificatore)

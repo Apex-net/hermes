@@ -5,6 +5,7 @@
     using Apexnet.Dispatch.Jobs;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
+    using Common.Annotations;
 
     public class DispatchController : ApiController
     {
@@ -12,14 +13,12 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
+        [UsedImplicitly]
         public DispatchController()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private DispatchController(IJobQueue messageJobQueue)

@@ -30,12 +30,7 @@
         {
             get
             {
-                return this.bundle.Schedule ?? DateTime.Now;
-            }
-
-            set
-            {
-                this.bundle.Schedule = value;
+                return this.bundle.Schedule;
             }
         }
 
@@ -44,7 +39,7 @@
             return new ScheduledBundleJob(bundle);
         }
 
-        // ReSharper disable MemberCanBePrivate.Global
+        //// ReSharper disable MemberCanBePrivate.Global
         public static void ScheduleBundle(ScheduledBundle bundle)
         {
             var queue = new HangfireJobQueue<Enqueued, Scheduled>();
@@ -52,9 +47,10 @@
             bundle.MailMessages.Each((message, i) => Send(message, queue));
             bundle.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
         }
+        //// ReSharper restore MemberCanBePrivate.Global
 
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
+        #region /// internal ///////////////////////////////////////////////////
+
         private static void Send(MailMessage mailMessage, IJobQueue queue)
         {
             var job = MailMessageJob.FromMailMessage(mailMessage);
@@ -66,5 +62,7 @@
             var job = ApexnetPushNotificationJob.FromApexnetPushNotification(pushNotification);
             queue.Enqueue(job);
         }
+
+        #endregion
     }
 }

@@ -2,8 +2,14 @@
 {
     public class MailAddress
     {
-        public string Address { get; set; }
+        public MailAddress(string address, string displayName)
+        {
+            this.DisplayName = displayName;
+            this.Address = address;
+        }
 
-        public string DisplayName { get; set; }
+        public string Address { get; private set; }
+
+        public string DisplayName { get; private set; }
     }
 }

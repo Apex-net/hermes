@@ -27,14 +27,12 @@
             return new MailMessageJob(message);
         }
 
-        // ReSharper disable MemberCanBePrivate.Global
+        //// ReSharper disable MemberCanBePrivate.Global
         public static void Send(MailMessage message)
         {
-            var sender = new MailMessageSender();
+            IMailMessageSender sender = new MailMessageSender();
             sender.Send(message);
         }
-
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
+        //// ReSharper restore MemberCanBePrivate.Global
     }
 }

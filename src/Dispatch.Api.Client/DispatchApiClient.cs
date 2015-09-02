@@ -13,14 +13,11 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public DispatchApiClient()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private DispatchApiClient(IRestHttpClientAsync httpService)

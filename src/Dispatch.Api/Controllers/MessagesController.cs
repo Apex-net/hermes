@@ -4,6 +4,7 @@
     using System.Web.Http;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
+    using Common.Annotations;
 
     public class MessagesController : ApiController
     {
@@ -11,14 +12,12 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
+        [UsedImplicitly]
         public MessagesController()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private MessagesController(IJobQueue messageJobQueue)

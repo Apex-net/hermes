@@ -2,16 +2,33 @@ namespace Apexnet.Messaging.Push
 {
     public class ApexnetPushNotification
     {
-        public string AuthKey { get; set; }
+        public ApexnetPushNotification(
+            string authKey,
+            string appKey,
+            string userName,
+            string message,
+            string sound = "",
+            int badgeCount = 0)
+        {
+            this.AuthKey = authKey;
+            this.AppKey = appKey;
+            this.UserName = userName;
 
-        public string AppKey { get; set; }
+            this.Message = message;
+            this.Sound = sound;
+            this.BadgeCount = badgeCount;
+        }
 
-        public string Message { get; set; }
+        public string AuthKey { get; private set; }
 
-        public string UserName { get; set; }
+        public string AppKey { get; private set; }
 
-        public string Sound { get; set; }
+        public string UserName { get; private set; }
 
-        public int BadgeCount { get; set; }
+        public string Message { get; private set; }
+
+        public string Sound { get; private set; }
+
+        public int BadgeCount { get; private set; }
     }
 }

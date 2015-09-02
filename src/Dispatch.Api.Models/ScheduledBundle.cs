@@ -8,16 +8,17 @@
 
     public class ScheduledBundle
     {
-        public ScheduledBundle()
+        public ScheduledBundle(DateTimeOffset schedule)
         {
+            this.Schedule = schedule;
             this.MailMessages = new Collection<MailMessage>();
             this.ApexnetPushNotifications = new Collection<ApexnetPushNotification>();
         }
 
-        public DateTimeOffset? Schedule { get; set; }
+        public DateTimeOffset Schedule { get; private set; }
 
-        public ICollection<MailMessage> MailMessages { get; set; }
+        public ICollection<MailMessage> MailMessages { get; private set; }
 
-        public ICollection<ApexnetPushNotification> ApexnetPushNotifications { get; set; }
+        public ICollection<ApexnetPushNotification> ApexnetPushNotifications { get; private set; }
     }
 }
