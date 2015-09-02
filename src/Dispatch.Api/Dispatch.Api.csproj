@@ -197,6 +197,9 @@
     <Content Include="bin\Models\AgendaModel.ssdl" />
     <Content Include="bin\Models\AgendaModel.msl" />
     <Content Include="bin\Models\AgendaModel.csdl" />
+    <Content Include="configs\apexnet-pushservice.config" />
+    <Content Include="configs\hangfirestorage-redis.config" />
+    <Content Include="configs\smtp.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
