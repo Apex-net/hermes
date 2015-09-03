@@ -9,7 +9,7 @@
     {
         private readonly MailMessage mailMessage;
 
-        private MailMessageJob(MailMessage mailMessage)
+        public MailMessageJob(MailMessage mailMessage)
         {
             this.mailMessage = mailMessage;
         }
@@ -18,21 +18,17 @@
         {
             get
             {
-                return () => Send(this.mailMessage);
+                return () => _Send(this.mailMessage);
             }
         }
 
-        public static MailMessageJob FromMailMessage(MailMessage message)
-        {
-            return new MailMessageJob(message);
-        }
-
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void Send(MailMessage message)
+        public static void _Send(MailMessage message)
         {
-            IMailMessageSender sender = new MailMessageSender();
+            var sender = new MailMessageSender();
             sender.Send(message);
         }
+
         //// ReSharper restore MemberCanBePrivate.Global
     }
 }

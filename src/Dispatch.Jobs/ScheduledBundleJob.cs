@@ -13,7 +13,7 @@
     {
         private readonly ScheduledBundle bundle;
 
-        private ScheduledBundleJob(ScheduledBundle bundle)
+        public ScheduledBundleJob(ScheduledBundle bundle)
         {
             this.bundle = bundle;
         }
@@ -22,7 +22,7 @@
         {
             get
             {
-                return () => ScheduleBundle(this.bundle);
+                return () => _Schedule(this.bundle);
             }
         }
 
@@ -34,33 +34,28 @@
             }
         }
 
-        public static ScheduledBundleJob FromScheduledBundle(ScheduledBundle bundle)
-        {
-            return new ScheduledBundleJob(bundle);
-        }
-
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void ScheduleBundle(ScheduledBundle bundle)
+        public static void _Schedule(ScheduledBundle bundle)
         {
-            var queue = new HangfireJobQueue<Enqueued, Scheduled>();
+            var queue = new HangfireJobManager();
 
             bundle.MailMessages.Each((message, i) => Send(message, queue));
             bundle.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
         }
-        //// ReSharper restore MemberCanBePrivate.Global
 
+        //// ReSharper restore MemberCanBePrivate.Global
         #region /// internal ///////////////////////////////////////////////////
 
-        private static void Send(MailMessage mailMessage, IJobQueue queue)
+        private static void Send(MailMessage mailMessage, IJobManager manager)
         {
-            var job = MailMessageJob.FromMailMessage(mailMessage);
-            queue.Enqueue(job);
+            var job = new MailMessageJob(mailMessage);
+            manager.Enqueue<Enqueued>(job);
         }
 
-        private static void Send(ApexnetPushNotification pushNotification, IJobQueue queue)
+        private static void Send(ApexnetPushNotification pushNotification, IJobManager manager)
         {
-            var job = ApexnetPushNotificationJob.FromApexnetPushNotification(pushNotification);
-            queue.Enqueue(job);
+            var job = new ApexnetPushNotificationJob(pushNotification);
+            manager.Enqueue<Enqueued>(job);
         }
 
         #endregion

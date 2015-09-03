@@ -2,7 +2,7 @@ namespace Apexnet.JobQueue
 {
     using System;
 
-    public interface IEnqueued : IQueueable
+    public interface IEnqueued
     {
         Guid Id { get; set; }
     }

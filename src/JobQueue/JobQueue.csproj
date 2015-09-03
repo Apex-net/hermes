@@ -160,7 +160,7 @@
     <Compile Include="JobStorages\Hangfire\HangfireMemoryStorage.cs" />
     <Compile Include="JobStorages\Hangfire\HangfireRedisStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JobQueues\HangfireJobQueue.cs" />
+    <Compile Include="JobQueues\HangfireJobManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

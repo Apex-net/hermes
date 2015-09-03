@@ -9,7 +9,7 @@
     {
         private readonly ApexnetPushNotification pushNotification;
 
-        private ApexnetPushNotificationJob(ApexnetPushNotification pushNotification)
+        public ApexnetPushNotificationJob(ApexnetPushNotification pushNotification)
         {
             this.pushNotification = pushNotification;
         }
@@ -18,21 +18,17 @@
         {
             get
             {
-                return () => Send(this.pushNotification);
+                return () => _Send(this.pushNotification);
             }
         }
 
-        public static ApexnetPushNotificationJob FromApexnetPushNotification(ApexnetPushNotification notification)
-        {
-            return new ApexnetPushNotificationJob(notification);
-        }
-
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void Send(ApexnetPushNotification notification)
+        public static void _Send(ApexnetPushNotification notification)
         {
-            IApexnetPushNotificationSender sender = new ApexnetPushNotificationSender();
+            var sender = new ApexnetPushNotificationSender();
             sender.Send(notification);
         }
+
         //// ReSharper restore MemberCanBePrivate.Global
     }
 }

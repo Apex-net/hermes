@@ -2,7 +2,7 @@
 {
     using Apexnet.Messaging.ApexnetPushServiceReference;
 
-    public class ApexnetPushNotificationSender : IApexnetPushNotificationSender
+    public class ApexnetPushNotificationSender
     {
         private readonly Notificatore notificatore;
 

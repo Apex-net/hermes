@@ -1,16 +1,12 @@
 ﻿namespace Apexnet.Dispatch.Api
 {
     using System;
-    using System.Linq.Expressions;
+    using Apexnet.Dispatch.Api.Annotations;
     using Apexnet.JobQueue;
-    using Newtonsoft.Json;
 
+    [UsedImplicitly]
     public class Enqueued : IEnqueued
     {
-        [JsonIgnore]
         public Guid Id { get; set; }
-
-        [JsonIgnore]
-        public Expression<Action> Job { get; private set; }
     }
 }

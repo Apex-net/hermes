@@ -3,7 +3,7 @@
     using System.Net.Mail;
     using Common.Utils;
 
-    public class MailMessageSender : IMailMessageSender
+    public class MailMessageSender
     {
         private readonly SmtpClient smtpClient;
 

@@ -9,7 +9,7 @@
 
     public class DispatchController : ApiController
     {
-        private readonly IJobQueue messageJobQueue;
+        private readonly IJobManager messageJobManager;
 
         #region TODO: replace with IoC container
 
@@ -21,16 +21,16 @@
 
         #endregion
 
-        private DispatchController(IJobQueue messageJobQueue)
+        private DispatchController(IJobManager messageJobManager)
         {
-            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<Enqueued, Scheduled>();
+            this.messageJobManager = messageJobManager ?? new HangfireJobManager();
         }
 
         [ResponseType(typeof(Scheduled))]
         public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
         {
-            var job = ScheduledBundleJob.FromScheduledBundle(bundle);
-            var scheduled = this.messageJobQueue.Schedule(job);
+            var job = new ScheduledBundleJob(bundle);
+            var scheduled = this.messageJobManager.Schedule<Scheduled>(job);
 
             return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
         }

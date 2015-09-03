@@ -8,7 +8,7 @@
 
     public class MessagesController : ApiController
     {
-        private readonly IJobQueue messageJobQueue;
+        private readonly IJobManager messageJobManager;
 
         #region TODO: replace with IoC container
 
@@ -20,14 +20,14 @@
 
         #endregion
 
-        private MessagesController(IJobQueue messageJobQueue)
+        private MessagesController(IJobManager messageJobManager)
         {
-            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<Enqueued, Scheduled>();
+            this.messageJobManager = messageJobManager ?? new HangfireJobManager();
         }
 
         public IHttpActionResult Delete(Guid id)
         {
-            var result = this.messageJobQueue.Delete(id);
+            var result = this.messageJobManager.Delete(id);
 
             return result ? (IHttpActionResult)this.Ok() : this.NotFound();
         }
