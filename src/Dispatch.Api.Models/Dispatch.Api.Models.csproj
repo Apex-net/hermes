@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enqueued.cs" />
+    <Compile Include="Properties\Annotations.cs">
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="ScheduledBundle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scheduled.cs" />
