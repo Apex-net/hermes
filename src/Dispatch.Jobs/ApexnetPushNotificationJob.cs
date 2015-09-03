@@ -14,7 +14,7 @@
             this.pushNotification = pushNotification;
         }
 
-        Expression<Action> IQueueable.Job
+        public Expression<Action> Job
         {
             get
             {

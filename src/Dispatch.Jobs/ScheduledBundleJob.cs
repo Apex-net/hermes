@@ -18,7 +18,7 @@
             this.bundle = bundle;
         }
 
-        Expression<Action> IQueueable.Job
+        public Expression<Action> Job
         {
             get
             {

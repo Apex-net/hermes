@@ -14,7 +14,7 @@
             this.mailMessage = mailMessage;
         }
 
-        Expression<Action> IQueueable.Job
+        public Expression<Action> Job
         {
             get
             {
