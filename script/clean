@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Usage: script/clean
+
+set -o errexit
+set -o nounset
+
+git clean -fdx -e '*.suo' -e 'src/packages/'

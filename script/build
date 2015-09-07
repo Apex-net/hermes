@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Usage: script/clean
+
+set -o errexit
+set -o nounset
+
+nuget restore src/Hermes.sln
+echo "Building..."
+time MSBuild.exe src/Hermes.sln //nologo //target:Rebuild //maxcpucount //consoleloggerparameters:ErrorsOnly
