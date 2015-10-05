@@ -14,16 +14,16 @@
             this.pushNotification = pushNotification;
         }
 
-        public Expression<Action> Job
+        public Expression<Action> Operation
         {
             get
             {
-                return () => _Send(this.pushNotification);
+                return () => _Run(this.pushNotification);
             }
         }
 
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void _Send(ApexnetPushNotification notification)
+        public static void _Run(ApexnetPushNotification notification)
         {
             var sender = new ApexnetPushNotificationSender();
             sender.Send(notification);

@@ -4,9 +4,15 @@ namespace Apexnet.JobQueue
 
     public interface IJobsManager
     {
-        void Enqueue<TEnqueued>(IQueueable queueable) where TEnqueued : IEnqueued;
+        void Enqueue<TEnqueued>(IQueueable job) where TEnqueued : IEnqueued;
 
-        IScheduled Schedule<TScheduled>(ISchedulable schedulable) where TScheduled : IScheduled;
+        TScheduled Schedule<TSchedulable, TScheduled>(TSchedulable job)
+            where TSchedulable : IQueueable, ISchedulable
+            where TScheduled : IScheduled;
+
+        TEnqueued Recur<TRecurring, TEnqueued>(TRecurring job)
+            where TRecurring : IRecurring
+            where TEnqueued : IEnqueued;
 
         bool Delete(Guid id);
     }

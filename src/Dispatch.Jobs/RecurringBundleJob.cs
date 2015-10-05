@@ -6,11 +6,11 @@
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
 
-    public class ScheduledBundleJob : BaseBundleJob, ISchedulable
+    public class RecurringBundleJob : BaseBundleJob, IRecurring
     {
-        private readonly ScheduledBundleRequest request;
+        private readonly RecurringBundleRequest request;
 
-        public ScheduledBundleJob(ScheduledBundleRequest request)
+        public RecurringBundleJob(RecurringBundleRequest request)
             : base(new HangfireJobsManager())
         {
             this.request = request;
@@ -24,11 +24,11 @@
             }
         }
 
-        public DateTimeOffset Schedule
+        public string CronExpression
         {
             get
             {
-                return this.request.Schedule;
+                return this.request.CronExpression;
             }
         }
     }

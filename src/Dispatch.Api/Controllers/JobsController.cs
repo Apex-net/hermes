@@ -22,6 +22,7 @@
 
         #endregion
 
+        [HttpDelete]
         public IHttpActionResult Delete(Guid id)
         {
             var result = this.JobsManager.Delete(id);

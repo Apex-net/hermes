@@ -14,16 +14,16 @@
             this.mailMessage = mailMessage;
         }
 
-        public Expression<Action> Job
+        public Expression<Action> Operation
         {
             get
             {
-                return () => _Send(this.mailMessage);
+                return () => _Run(this.mailMessage);
             }
         }
 
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void _Send(MailMessage message)
+        public static void _Run(MailMessage message)
         {
             var sender = new MailMessageSender();
             sender.Send(message);
