@@ -27,15 +27,39 @@
         }
 
         public TEnqueued Recur<TRecurring, TEnqueued>(TRecurring job)
-            where TRecurring : IRecurring
+            where TRecurring : IQueueable, IRecurring
             where TEnqueued : IEnqueued
         {
-            throw new NotImplementedException();
+            var jobId = Guid.NewGuid();
+
+            RecurringJob.AddOrUpdate(jobId.ToString(), job.Operation, job.CronExpression);
+
+            var result = (TEnqueued)Activator.CreateInstance(typeof(TEnqueued));
+            result.Id = jobId;
+
+            return result;
         }
 
         public bool Delete(Guid id)
         {
-            return BackgroundJob.Delete(id.ToString());
+            var jobId = id.ToString();
+
+            return TryDeleteBackgroundJob(jobId) || TryDeleteRecurringJob(jobId);
         }
+
+        #region /// internal ///////////////////////////////////////////////////
+
+        private static bool TryDeleteBackgroundJob(string jobId)
+        {
+            return BackgroundJob.Delete(jobId);
+        }
+
+        private static bool TryDeleteRecurringJob(string jobId)
+        {
+            RecurringJob.RemoveIfExists(jobId);
+            return true;
+        }
+
+        #endregion
     }
 }

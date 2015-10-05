@@ -14,25 +14,42 @@
 
         [Fact]
         [UsedImplicitly]
-        public async void TestMethod1()
+        public async void Test_Schedule()
         {
             var schedule = new DateTimeOffset(DateTime.Now);
 
-            var bundle = new ScheduledBundleRequest(schedule);
+            var request = new ScheduledBundleRequest(schedule);
 
-            bundle.MailMessages.Add(NewMailMessage());
-            bundle.ApexnetPushNotifications.Add(CreateNotification());
+            request.MailMessages.Add(NewMailMessage());
+            request.ApexnetPushNotifications.Add(CreateNotification());
 
-            var scheduled = await this.client.Schedule(bundle)
-                                      .ConfigureAwait(false);
+            var response = await this.client.Schedule(request)
+                                     .ConfigureAwait(false);
 
-            Assert.NotNull(scheduled.Id);
-            Assert.Equal(schedule, scheduled.Schedule);
+            Assert.NotNull(response.Id);
+            Assert.Equal(schedule, response.Schedule);
         }
 
         [Fact]
         [UsedImplicitly]
-        public async void TestMethod2()
+        public async void Test_Recur()
+        {
+            const string EveryMinute = "*/1 * * * *";
+
+            var request = new RecurringBundleRequest(EveryMinute);
+
+            request.MailMessages.Add(NewMailMessage());
+            request.ApexnetPushNotifications.Add(CreateNotification());
+
+            var response = await this.client.Recur(request)
+                                     .ConfigureAwait(false);
+
+            Assert.NotNull(response.Id);
+        }
+
+        [Fact]
+        [UsedImplicitly]
+        public async void Test_Delete()
         {
             var id = Guid.Parse("025a3a20-3514-42a5-ac66-f01084539d87");
 
@@ -56,11 +73,14 @@
 
         private static MailMessage NewMailMessage()
         {
-            const string Subject = "Ciao mondo";
-            const string Body = "<h1>Titolo</h1>";
+            const string Subject = "Hermes: test";
+            const string Body =
+                "<h1>Titolo</h1>" +
+                "<p>Questa è una prova di <a href=\"https://github.com/Apex-net/hermes\">Hermes</a>.</p>" +
+                "<p>Ignorare, grazie.</p>";
             const bool IsBodyHtml = true;
 
-            return new MailMessage(AddressBook.Ali, AddressBook.Fabio, Subject, Body, IsBodyHtml);
+            return new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
         }
 
         #endregion

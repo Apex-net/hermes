@@ -11,7 +11,7 @@ namespace Apexnet.JobQueue
             where TScheduled : IScheduled;
 
         TEnqueued Recur<TRecurring, TEnqueued>(TRecurring job)
-            where TRecurring : IRecurring
+            where TRecurring : IQueueable, IRecurring
             where TEnqueued : IEnqueued;
 
         bool Delete(Guid id);

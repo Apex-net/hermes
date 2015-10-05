@@ -26,12 +26,14 @@
                                new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "1"));
         }
 
-        public Task<ScheduledResponse> Schedule(ScheduledBundleRequest scheduledBundleRequest)
+        public Task<ScheduledResponse> Schedule(ScheduledBundleRequest request)
         {
-            return this.httpService.CreateAsync<ScheduledBundleRequest, ScheduledResponse>(
-                "api/schedule",
-                scheduledBundleRequest,
-                null);
+            return this.httpService.CreateAsync<ScheduledBundleRequest, ScheduledResponse>("schedule", request, null);
+        }
+
+        public Task<EnqueuedResponse> Recur(RecurringBundleRequest request)
+        {
+            return this.httpService.CreateAsync<RecurringBundleRequest, EnqueuedResponse>("recur", request, null);
         }
 
         public Task<bool> Cancel(Guid id)

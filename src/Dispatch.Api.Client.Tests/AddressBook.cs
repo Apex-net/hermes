@@ -12,6 +12,8 @@ namespace Dispatch.Api.Client.Tests
         public static readonly MailAddress Andrea = new MailAddress("a.caliesi@apexnet.it", "Andrea Calisesi");
 
         public static readonly MailAddress Fabio = new MailAddress("f.vassura@apexnet.it", "Fabio Vassura");
+
+        public static readonly MailAddress AgendaSviluppo = new MailAddress("agesvil@apexnet.it", "AgendaBocconi (Sviluppo)");
     }
     // ReSharper restore UnusedMember.Global
 }

@@ -8,7 +8,8 @@ namespace Apexnet.Dispatch.Jobs
     using Apexnet.Messaging.Push;
     using Common.Utils;
 
-    public abstract class BaseBundleJob : IQueueable
+    public abstract class BaseBundleJob<TRequest> : IQueueable
+        where TRequest : IBundleRequest
     {
         private readonly IJobsManager hangfireJobsManager;
 
@@ -20,7 +21,7 @@ namespace Apexnet.Dispatch.Jobs
         public abstract Expression<Action> Operation { get; }
 
         // ReSharper disable MemberCanBeProtected.Global
-        public void _Run(IBundleRequest request)
+        public void _Run(TRequest request)
         {
             request.MailMessages.Each((message, i) => Send(message, this.hangfireJobsManager));
             request.ApexnetPushNotifications.Each((notification, i) => Send(notification, this.hangfireJobsManager));

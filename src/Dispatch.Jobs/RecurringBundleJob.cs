@@ -3,15 +3,28 @@
     using System;
     using System.Linq.Expressions;
     using Apexnet.Dispatch.Api;
+    using Apexnet.Dispatch.Api.Annotations;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
 
-    public class RecurringBundleJob : BaseBundleJob, IRecurring
+    public class RecurringBundleJob : BaseBundleJob<RecurringBundleRequest>, IRecurring
     {
         private readonly RecurringBundleRequest request;
 
+        [UsedImplicitly]
+        public RecurringBundleJob()
+            : this(null, null)
+        {
+        }
+
         public RecurringBundleJob(RecurringBundleRequest request)
-            : base(new HangfireJobsManager())
+            : this(null, request)
+        {
+            this.request = request;
+        }
+
+        private RecurringBundleJob(IJobsManager jobsManager, RecurringBundleRequest request)
+            : base(jobsManager ?? new HangfireJobsManager())
         {
             this.request = request;
         }
