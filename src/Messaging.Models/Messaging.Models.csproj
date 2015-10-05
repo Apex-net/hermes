@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Http\HttpRequestMessage.cs" />
     <Compile Include="Mail\MailAddress.cs" />
     <Compile Include="Mail\MailMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

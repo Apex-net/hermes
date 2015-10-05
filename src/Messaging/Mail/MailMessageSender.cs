@@ -1,9 +1,10 @@
 ﻿namespace Apexnet.Messaging.Mail
 {
+    using System;
     using System.Net.Mail;
     using Common.Utils;
 
-    public class MailMessageSender
+    public class MailMessageSender : IDisposable
     {
         private readonly SmtpClient smtpClient;
 
@@ -37,6 +38,11 @@
             mailMessage.IsBodyHtml = message.IsBodyHtml;
 
             this.smtpClient.Send(mailMessage);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)this.smtpClient).Dispose();
         }
     }
 }

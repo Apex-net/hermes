@@ -1,8 +1,9 @@
 ﻿namespace Apexnet.Messaging.Push
 {
+    using System;
     using Apexnet.Messaging.ApexnetPushServiceReference;
 
-    public class ApexnetPushNotificationSender
+    public class ApexnetPushNotificationSender : IDisposable
     {
         private readonly Notificatore notificatore;
 
@@ -29,6 +30,11 @@
                 notification.UserName,
                 notification.Sound,
                 notification.BadgeCount);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)this.notificatore).Dispose();
         }
     }
 }

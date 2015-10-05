@@ -2,6 +2,7 @@
 {
     using System;
     using Apexnet.Dispatch.Api;
+    using Apexnet.Messaging.Http;
     using Apexnet.Messaging.Mail;
     using Apexnet.Messaging.Push;
     using Dispatch.Api.Client.Tests.Annotations;
@@ -21,7 +22,8 @@
             var request = new ScheduledBundleRequest(schedule);
 
             request.MailMessages.Add(NewMailMessage());
-            request.ApexnetPushNotifications.Add(CreateNotification());
+            request.HttpRequests.Add(NewHttpRequestMessage());
+            request.ApexnetPushNotifications.Add(NewApexnetPushNotification());
 
             var response = await this.client.Schedule(request)
                                      .ConfigureAwait(false);
@@ -39,7 +41,8 @@
             var request = new RecurringBundleRequest(EveryMinute);
 
             request.MailMessages.Add(NewMailMessage());
-            request.ApexnetPushNotifications.Add(CreateNotification());
+            request.HttpRequests.Add(NewHttpRequestMessage());
+            request.ApexnetPushNotifications.Add(NewApexnetPushNotification());
 
             var response = await this.client.Recur(request)
                                      .ConfigureAwait(false);
@@ -61,16 +64,6 @@
 
         #region /// internal ///////////////////////////////////////////////////
 
-        private static ApexnetPushNotification CreateNotification()
-        {
-            const string AuthKey = "3892DB2C-53A9-4B57-9638-08C1E91319C8";
-            const string AppKey = "IB";
-            const string UserName = "admin";
-            const string Message = "Ciao";
-
-            return new ApexnetPushNotification(AuthKey, AppKey, UserName, Message);
-        }
-
         private static MailMessage NewMailMessage()
         {
             const string Subject = "Hermes: test";
@@ -81,6 +74,21 @@
             const bool IsBodyHtml = true;
 
             return new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+        }
+
+        private static HttpRequestMessage NewHttpRequestMessage()
+        {
+            return new HttpRequestMessage("HEAD", "http://requestb.in/188o2xj1");
+        }
+
+        private static ApexnetPushNotification NewApexnetPushNotification()
+        {
+            const string AuthKey = "3892DB2C-53A9-4B57-9638-08C1E91319C8";
+            const string AppKey = "IB";
+            const string UserName = "admin";
+            const string Message = "Ciao";
+
+            return new ApexnetPushNotification(AuthKey, AppKey, UserName, Message);
         }
 
         #endregion

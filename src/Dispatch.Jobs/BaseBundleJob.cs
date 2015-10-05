@@ -4,6 +4,7 @@ namespace Apexnet.Dispatch.Jobs
     using System.Linq.Expressions;
     using Apexnet.Dispatch.Api;
     using Apexnet.JobQueue;
+    using Apexnet.Messaging.Http;
     using Apexnet.Messaging.Mail;
     using Apexnet.Messaging.Push;
     using Common.Utils;
@@ -24,6 +25,7 @@ namespace Apexnet.Dispatch.Jobs
         public void _Run(TRequest request)
         {
             request.MailMessages.Each((message, i) => Send(message, this.hangfireJobsManager));
+            request.HttpRequests.Each((req, i) => Send(req, this.hangfireJobsManager));
             request.ApexnetPushNotifications.Each((notification, i) => Send(notification, this.hangfireJobsManager));
         }
 
@@ -33,6 +35,12 @@ namespace Apexnet.Dispatch.Jobs
         private static void Send(MailMessage mailMessage, IJobsManager manager)
         {
             var job = new MailMessageJob(mailMessage);
+            manager.Enqueue<Enqueued>(job);
+        }
+
+        private static void Send(HttpRequestMessage httpRequestMessage, IJobsManager manager)
+        {
+            var job = new HttpRequestJob(httpRequestMessage);
             manager.Enqueue<Enqueued>(job);
         }
 

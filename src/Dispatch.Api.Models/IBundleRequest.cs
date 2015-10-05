@@ -1,6 +1,7 @@
 namespace Apexnet.Dispatch.Api
 {
     using System.Collections.Generic;
+    using Apexnet.Messaging.Http;
     using Apexnet.Messaging.Mail;
     using Apexnet.Messaging.Push;
 
@@ -8,6 +9,9 @@ namespace Apexnet.Dispatch.Api
     {
         // ReSharper disable once ReturnTypeCanBeEnumerable.Global
         ICollection<MailMessage> MailMessages { get; }
+
+        // ReSharper disable once ReturnTypeCanBeEnumerable.Global
+        ICollection<HttpRequestMessage> HttpRequests { get; }
 
         // ReSharper disable once ReturnTypeCanBeEnumerable.Global
         ICollection<ApexnetPushNotification> ApexnetPushNotifications { get; }
