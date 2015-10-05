@@ -23,7 +23,7 @@
             bundle.MailMessages.Add(NewMailMessage());
             bundle.ApexnetPushNotifications.Add(CreateNotification());
 
-            var scheduled = await this.client.Send(bundle)
+            var scheduled = await this.client.Schedule(bundle)
                                       .ConfigureAwait(false);
 
             Assert.NotNull(scheduled.Id);

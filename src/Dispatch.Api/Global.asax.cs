@@ -13,7 +13,7 @@
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            DefaultWebApiConfig.Register("dispatch", "0", GlobalConfiguration.Configuration);
+            DefaultWebApiConfig.Register("dispatch", "1", GlobalConfiguration.Configuration);
         }
     }
 }
