@@ -3,31 +3,28 @@
     using System;
     using System.Web.Http;
     using Apexnet.JobQueue;
-    using Apexnet.JobQueue.JobQueues;
     using Common.Annotations;
 
-    public class MessagesController : ApiController
+    public class JobsController : BaseApiController
     {
-        private readonly IJobManager messageJobManager;
-
         #region TODO: replace with IoC container
 
         [UsedImplicitly]
-        public MessagesController()
+        public JobsController()
             : this(null)
+        {
+        }
+
+        private JobsController(IJobsManager jobsManager)
+            : base(jobsManager)
         {
         }
 
         #endregion
 
-        private MessagesController(IJobManager messageJobManager)
-        {
-            this.messageJobManager = messageJobManager ?? new HangfireJobManager();
-        }
-
         public IHttpActionResult Delete(Guid id)
         {
-            var result = this.messageJobManager.Delete(id);
+            var result = this.JobsManager.Delete(id);
 
             return result ? (IHttpActionResult)this.Ok() : this.NotFound();
         }

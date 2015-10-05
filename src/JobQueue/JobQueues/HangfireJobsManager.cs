@@ -3,7 +3,7 @@
     using System;
     using Hangfire;
 
-    public class HangfireJobManager : IJobManager
+    public class HangfireJobsManager : IJobsManager
     {
         public void Enqueue<TEnqueued>(IQueueable queueable) where TEnqueued : IEnqueued
         {

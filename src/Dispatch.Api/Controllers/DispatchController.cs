@@ -4,13 +4,10 @@
     using System.Web.Http.Description;
     using Apexnet.Dispatch.Jobs;
     using Apexnet.JobQueue;
-    using Apexnet.JobQueue.JobQueues;
     using Common.Annotations;
 
-    public class DispatchController : ApiController
+    public class DispatchController : BaseApiController
     {
-        private readonly IJobManager messageJobManager;
-
         #region TODO: replace with IoC container
 
         [UsedImplicitly]
@@ -19,20 +16,20 @@
         {
         }
 
-        #endregion
-
-        private DispatchController(IJobManager messageJobManager)
+        private DispatchController(IJobsManager jobsManager)
+            : base(jobsManager)
         {
-            this.messageJobManager = messageJobManager ?? new HangfireJobManager();
         }
 
-        [ResponseType(typeof(Scheduled))]
-        public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
-        {
-            var job = new ScheduledBundleJob(bundle);
-            var scheduled = this.messageJobManager.Schedule<Scheduled>(job);
+        #endregion
 
-            return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
+        [ResponseType(typeof(ScheduledResponse))]
+        public IHttpActionResult Post([FromBody] ScheduledBundleRequest request)
+        {
+            var job = new ScheduledBundleJob(request);
+            var response = this.JobsManager.Schedule<ScheduledResponse>(job);
+
+            return this.CreatedAtRoute("DefaultApi", new { controller = "jobs", id = response.Id }, response);
         }
     }
 }

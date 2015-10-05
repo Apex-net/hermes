@@ -11,18 +11,18 @@
 
     public class ScheduledBundleJob : ISchedulable
     {
-        private readonly ScheduledBundle bundle;
+        private readonly ScheduledBundleRequest scheduledBundleRequest;
 
-        public ScheduledBundleJob(ScheduledBundle bundle)
+        public ScheduledBundleJob(ScheduledBundleRequest scheduledBundleRequest)
         {
-            this.bundle = bundle;
+            this.scheduledBundleRequest = scheduledBundleRequest;
         }
 
         public Expression<Action> Job
         {
             get
             {
-                return () => _Schedule(this.bundle);
+                return () => _Schedule(this.scheduledBundleRequest);
             }
         }
 
@@ -30,29 +30,29 @@
         {
             get
             {
-                return this.bundle.Schedule;
+                return this.scheduledBundleRequest.Schedule;
             }
         }
 
         //// ReSharper disable MemberCanBePrivate.Global
-        public static void _Schedule(ScheduledBundle bundle)
+        public static void _Schedule(ScheduledBundleRequest scheduledBundleRequest)
         {
-            var queue = new HangfireJobManager();
+            var queue = new HangfireJobsManager();
 
-            bundle.MailMessages.Each((message, i) => Send(message, queue));
-            bundle.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
+            scheduledBundleRequest.MailMessages.Each((message, i) => Send(message, queue));
+            scheduledBundleRequest.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
         }
 
         //// ReSharper restore MemberCanBePrivate.Global
         #region /// internal ///////////////////////////////////////////////////
 
-        private static void Send(MailMessage mailMessage, IJobManager manager)
+        private static void Send(MailMessage mailMessage, IJobsManager manager)
         {
             var job = new MailMessageJob(mailMessage);
             manager.Enqueue<Enqueued>(job);
         }
 
-        private static void Send(ApexnetPushNotification pushNotification, IJobManager manager)
+        private static void Send(ApexnetPushNotification pushNotification, IJobsManager manager)
         {
             var job = new ApexnetPushNotificationJob(pushNotification);
             manager.Enqueue<Enqueued>(job);

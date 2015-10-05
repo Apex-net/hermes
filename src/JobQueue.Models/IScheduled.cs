@@ -4,6 +4,6 @@ namespace Apexnet.JobQueue
 
     public interface IScheduled : IEnqueued
     {
-        DateTimeOffset Schedule { get; set; }
+        DateTimeOffset Schedule { set; }
     }
 }

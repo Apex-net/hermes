@@ -6,9 +6,9 @@
     using Apexnet.Messaging.Mail;
     using Apexnet.Messaging.Push;
 
-    public class ScheduledBundle
+    public class ScheduledBundleRequest
     {
-        public ScheduledBundle(DateTimeOffset schedule)
+        public ScheduledBundleRequest(DateTimeOffset schedule)
         {
             this.Schedule = schedule;
             this.MailMessages = new Collection<MailMessage>();

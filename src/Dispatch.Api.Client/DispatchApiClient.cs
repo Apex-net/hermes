@@ -26,9 +26,9 @@
                                new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "0"));
         }
 
-        public Task<Scheduled> Send(ScheduledBundle scheduledBundle)
+        public Task<ScheduledResponse> Send(ScheduledBundleRequest scheduledBundleRequest)
         {
-            return this.httpService.CreateAsync<ScheduledBundle, Scheduled>("dispatch", scheduledBundle, null);
+            return this.httpService.CreateAsync<ScheduledBundleRequest, ScheduledResponse>("dispatch", scheduledBundleRequest, null);
         }
 
         public Task<bool> Cancel(Guid id)

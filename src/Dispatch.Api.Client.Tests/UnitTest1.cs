@@ -18,7 +18,7 @@
         {
             var schedule = new DateTimeOffset(DateTime.Now);
 
-            var bundle = new ScheduledBundle(schedule);
+            var bundle = new ScheduledBundleRequest(schedule);
 
             bundle.MailMessages.Add(NewMailMessage());
             bundle.ApexnetPushNotifications.Add(CreateNotification());

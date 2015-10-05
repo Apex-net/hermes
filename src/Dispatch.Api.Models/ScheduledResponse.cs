@@ -3,7 +3,7 @@
     using System;
     using Apexnet.JobQueue;
 
-    public class Scheduled : IScheduled
+    public class ScheduledResponse : IScheduled
     {
         public Guid Id { get; set; }
 

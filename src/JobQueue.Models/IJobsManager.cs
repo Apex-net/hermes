@@ -2,7 +2,7 @@ namespace Apexnet.JobQueue
 {
     using System;
 
-    public interface IJobManager
+    public interface IJobsManager
     {
         void Enqueue<TEnqueued>(IQueueable queueable) where TEnqueued : IEnqueued;
 

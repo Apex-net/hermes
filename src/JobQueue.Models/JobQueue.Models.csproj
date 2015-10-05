@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IEnqueued.cs" />
-    <Compile Include="IJobManager.cs" />
+    <Compile Include="IJobsManager.cs" />
     <Compile Include="IQueueable.cs" />
     <Compile Include="ISchedulable.cs" />
     <Compile Include="IScheduled.cs" />
