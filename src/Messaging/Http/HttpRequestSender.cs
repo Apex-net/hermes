@@ -36,7 +36,7 @@ namespace Apexnet.Messaging.Http
         public void Send(HttpRequestMessage message)
         {
             var httpRequestMessage = new System.Net.Http.HttpRequestMessage(
-                HttpMethodsMapping[message.Method],
+                HttpMethodsMapping[message.Method.ToUpperInvariant()],
                 message.RequestUri);
 
             this.httpClient.SendAsync(httpRequestMessage)
