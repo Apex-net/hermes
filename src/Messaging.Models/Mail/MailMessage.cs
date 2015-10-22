@@ -7,7 +7,7 @@
     public class MailMessage
     {
         public MailMessage(MailAddress from, MailAddress to, string subject, string body = "", bool isBodyHtml = false)
-            : this(from, new Collection<MailAddress> { to }, subject, body, isBodyHtml)
+            : this(from, new List<MailAddress> { to }, subject, body, isBodyHtml)
         {
         }
 
@@ -16,15 +16,15 @@
         [JsonConstructor]
         private MailMessage(
             MailAddress from,
-            ICollection<MailAddress> to,
+            List<MailAddress> to,
             string subject,
             string body = "",
             bool isBodyHtml = false)
         {
             this.From = from;
             this.To = to;
-            this.Cc = new Collection<MailAddress>();
-            this.Bcc = new Collection<MailAddress>();
+            this.Cc = new List<MailAddress>();
+            this.Bcc = new List<MailAddress>();
             this.Subject = subject;
             this.Body = body;
             this.IsBodyHtml = isBodyHtml;
@@ -34,11 +34,11 @@
 
         public MailAddress From { get; private set; }
 
-        public ICollection<MailAddress> To { get; private set; }
+        public List<MailAddress> To { get; private set; }
 
-        public ICollection<MailAddress> Cc { get; private set; }
+        public List<MailAddress> Cc { get; private set; }
 
-        public ICollection<MailAddress> Bcc { get; private set; }
+        public List<MailAddress> Bcc { get; private set; }
 
         public string Subject { get; private set; }
 
