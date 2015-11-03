@@ -29,6 +29,8 @@
                 notification.Message,
                 notification.UserName,
                 notification.Sound,
+                notification.CustomField1,
+                notification.CustomField2,
                 notification.BadgeCount);
         }
 

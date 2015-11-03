@@ -8,6 +8,8 @@ namespace Apexnet.Messaging.Push
             string userName,
             string message,
             string sound = "",
+            string customField1 = "",
+            string customField2 = "",
             int badgeCount = 0)
         {
             this.AuthKey = authKey;
@@ -16,6 +18,8 @@ namespace Apexnet.Messaging.Push
 
             this.Message = message;
             this.Sound = sound;
+            this.CustomField1 = customField1;
+            this.CustomField2 = customField2;
             this.BadgeCount = badgeCount;
         }
 
@@ -28,6 +32,10 @@ namespace Apexnet.Messaging.Push
         public string Message { get; private set; }
 
         public string Sound { get; private set; }
+
+        public string CustomField1 { get; private set; }
+
+        public string CustomField2 { get; private set; }
 
         public int BadgeCount { get; private set; }
     }

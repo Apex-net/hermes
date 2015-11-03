@@ -39,6 +39,8 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
         
         private System.Threading.SendOrPostCallback SendNotificationWithLangOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SendPushOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +93,9 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
         
         /// <remarks/>
         public event SendNotificationWithLangCompletedEventHandler SendNotificationWithLangCompleted;
+        
+        /// <remarks/>
+        public event SendPushCompletedEventHandler SendPushCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://www.progamma.com/ID_DOExecute", RequestNamespace="http://www.progamma.com", ResponseNamespace="http://www.progamma.com")]
@@ -195,24 +200,26 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://www.progamma.com/SendNotification", RequestNamespace="http://www.progamma.com", ResponseNamespace="http://www.progamma.com")]
-        public string SendNotification(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, int pBadge) {
+        public string SendNotification(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge) {
             object[] results = this.Invoke("SendNotification", new object[] {
                         pAuthKey,
                         pApplicationKey,
                         pMessage,
                         pUserName,
                         pSound,
+                        pCustomField1,
+                        pCustomField2,
                         pBadge});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void SendNotificationAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, int pBadge) {
-            this.SendNotificationAsync(pAuthKey, pApplicationKey, pMessage, pUserName, pSound, pBadge, null);
+        public void SendNotificationAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge) {
+            this.SendNotificationAsync(pAuthKey, pApplicationKey, pMessage, pUserName, pSound, pCustomField1, pCustomField2, pBadge, null);
         }
         
         /// <remarks/>
-        public void SendNotificationAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, int pBadge, object userState) {
+        public void SendNotificationAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge, object userState) {
             if ((this.SendNotificationOperationCompleted == null)) {
                 this.SendNotificationOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendNotificationOperationCompleted);
             }
@@ -222,6 +229,8 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
                         pMessage,
                         pUserName,
                         pSound,
+                        pCustomField1,
+                        pCustomField2,
                         pBadge}, this.SendNotificationOperationCompleted, userState);
         }
         
@@ -268,6 +277,49 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
             if ((this.SendNotificationWithLangCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SendNotificationWithLangCompleted(this, new SendNotificationWithLangCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapRpcMethodAttribute("http://www.progamma.com/SendPush", RequestNamespace="http://www.progamma.com", ResponseNamespace="http://www.progamma.com")]
+        public string SendPush(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge) {
+            object[] results = this.Invoke("SendPush", new object[] {
+                        pAuthKey,
+                        pApplicationKey,
+                        pMessage,
+                        pUserName,
+                        pSound,
+                        pCustomField1,
+                        pCustomField2,
+                        pBadge});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendPushAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge) {
+            this.SendPushAsync(pAuthKey, pApplicationKey, pMessage, pUserName, pSound, pCustomField1, pCustomField2, pBadge, null);
+        }
+        
+        /// <remarks/>
+        public void SendPushAsync(string pAuthKey, string pApplicationKey, string pMessage, string pUserName, string pSound, string pCustomField1, string pCustomField2, int pBadge, object userState) {
+            if ((this.SendPushOperationCompleted == null)) {
+                this.SendPushOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendPushOperationCompleted);
+            }
+            this.InvokeAsync("SendPush", new object[] {
+                        pAuthKey,
+                        pApplicationKey,
+                        pMessage,
+                        pUserName,
+                        pSound,
+                        pCustomField1,
+                        pCustomField2,
+                        pBadge}, this.SendPushOperationCompleted, userState);
+        }
+        
+        private void OnSendPushOperationCompleted(object arg) {
+            if ((this.SendPushCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendPushCompleted(this, new SendPushCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -415,6 +467,32 @@ namespace Apexnet.Messaging.ApexnetPushServiceReference {
         private object[] results;
         
         internal SendNotificationWithLangCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    public delegate void SendPushCompletedEventHandler(object sender, SendPushCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.0.30319.34209")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendPushCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendPushCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
