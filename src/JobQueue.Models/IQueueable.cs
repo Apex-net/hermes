@@ -5,6 +5,6 @@ namespace Apexnet.JobQueue
 
     public interface IQueueable
     {
-        Expression<Action> Job { get; }
+        Expression<Action> Operation { get; }
     }
 }

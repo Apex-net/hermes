@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Apexnet.Dispatch.Api.Client</id>
-        <version>0.2.1</version>
+        <version>0.3.0</version>
         <authors>Ali Servet Donmez</authors>
         <projectUrl>https://github.com/apex-net/hermes</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Dispatch API Client Library</description>
         <dependencies>
             <dependency id="Apexnet.Agenda.Common" version="1.3.0" />
-            <dependency id="Apexnet.Dispatch.Api.Models" version="0.1.0" />
+            <dependency id="Apexnet.Dispatch.Api.Models" version="0.2.0" />
         </dependencies>
     </metadata>
     <files>

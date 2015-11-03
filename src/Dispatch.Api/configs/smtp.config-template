@@ -1,3 +1,3 @@
 <smtp from="">
-    <network defaultCredentials="false" host="smtp.gmail.com" password="0123456789" port="587" userName="user@example.com" enableSsl="true" />
+  <network defaultCredentials="false" host="smtp.gmail.com" password="0123456789" port="587" userName="user@example.com" enableSsl="true" />
 </smtp>

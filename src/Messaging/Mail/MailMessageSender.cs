@@ -1,22 +1,20 @@
 ﻿namespace Apexnet.Messaging.Mail
 {
+    using System;
     using System.Net.Mail;
     using Common.Utils;
 
-    public class MailMessageSender : IMailMessageSender
+    public class MailMessageSender : IDisposable
     {
         private readonly SmtpClient smtpClient;
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public MailMessageSender()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private MailMessageSender(SmtpClient smtpClient)
@@ -40,6 +38,11 @@
             mailMessage.IsBodyHtml = message.IsBodyHtml;
 
             this.smtpClient.Send(mailMessage);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)this.smtpClient).Dispose();
         }
     }
 }

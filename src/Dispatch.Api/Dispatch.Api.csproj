@@ -180,8 +180,9 @@
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\DispatchController.cs" />
-    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -197,6 +198,9 @@
     <Content Include="bin\Models\AgendaModel.ssdl" />
     <Content Include="bin\Models\AgendaModel.msl" />
     <Content Include="bin\Models\AgendaModel.csdl" />
+    <Content Include="configs\apexnet-pushservice.config" />
+    <Content Include="configs\hangfirestorage-redis.config" />
+    <Content Include="configs\smtp.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

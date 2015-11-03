@@ -9,6 +9,7 @@ namespace Apexnet.Dispatch.Api.App_Start
     using System.Linq;
     using Apexnet.Dispatch.Api.Properties;
     using Apexnet.JobQueue.JobStorages.Hangfire;
+    using Common.Annotations;
     using Hangfire;
     using Hangfire.Logging;
     using Hangfire.Logging.LogProviders;
@@ -22,7 +23,7 @@ namespace Apexnet.Dispatch.Api.App_Start
             new HangfireMemoryStorage("hangfire-memory")
         };
 
-        // ReSharper disable UnusedMember.Global
+        [UsedImplicitly]
         public void Configuration(IAppBuilder app)
         {
             ConfigureEnabledHangfireJobStorage(Settings.Default.JobStorageName);
@@ -35,8 +36,6 @@ namespace Apexnet.Dispatch.Api.App_Start
             LogProvider.SetCurrentLogProvider(new ElmahLogProvider(LogLevel.Info));
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #region /// internal ///////////////////////////////////////////////////
 
         private static void ConfigureEnabledHangfireJobStorage(string configuredStorageName)

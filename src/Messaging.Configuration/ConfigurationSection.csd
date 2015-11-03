@@ -20,6 +20,15 @@
         </attributeProperty>
       </attributeProperties>
     </configurationSection>
+    <configurationSectionGroup name="ApexnetPushService">
+      <configurationSectionProperties>
+        <configurationSectionProperty>
+          <containedConfigurationSection>
+            <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/ApexnetPushServiceReference" />
+          </containedConfigurationSection>
+        </configurationSectionProperty>
+      </configurationSectionProperties>
+    </configurationSectionGroup>
   </configurationElements>
   <propertyValidators>
     <validators />

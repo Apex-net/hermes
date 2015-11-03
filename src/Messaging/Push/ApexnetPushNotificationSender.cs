@@ -1,21 +1,19 @@
 ﻿namespace Apexnet.Messaging.Push
 {
+    using System;
     using Apexnet.Messaging.ApexnetPushServiceReference;
 
-    public class ApexnetPushNotificationSender : IApexnetPushNotificationSender
+    public class ApexnetPushNotificationSender : IDisposable
     {
         private readonly Notificatore notificatore;
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public ApexnetPushNotificationSender()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private ApexnetPushNotificationSender(Notificatore notificatore)
@@ -32,6 +30,11 @@
                 notification.UserName,
                 notification.Sound,
                 notification.BadgeCount);
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)this.notificatore).Dispose();
         }
     }
 }

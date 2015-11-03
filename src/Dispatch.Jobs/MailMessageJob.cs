@@ -9,32 +9,26 @@
     {
         private readonly MailMessage mailMessage;
 
-        private MailMessageJob(MailMessage mailMessage)
+        public MailMessageJob(MailMessage mailMessage)
         {
             this.mailMessage = mailMessage;
         }
 
-        Expression<Action> IQueueable.Job
+        public Expression<Action> Operation
         {
             get
             {
-                return () => Send(this.mailMessage);
+                return () => _Run(this.mailMessage);
             }
         }
 
-        public static MailMessageJob FromMailMessage(MailMessage message)
-        {
-            return new MailMessageJob(message);
-        }
-
-        // ReSharper disable MemberCanBePrivate.Global
-        public static void Send(MailMessage message)
+        //// ReSharper disable MemberCanBePrivate.Global
+        public static void _Run(MailMessage message)
         {
             var sender = new MailMessageSender();
             sender.Send(message);
         }
 
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
+        //// ReSharper restore MemberCanBePrivate.Global
     }
 }

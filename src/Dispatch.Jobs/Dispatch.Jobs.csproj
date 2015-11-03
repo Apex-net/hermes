@@ -136,8 +136,11 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
+    <Compile Include="BaseBundleJob.cs" />
+    <Compile Include="HttpRequestJob.cs" />
     <Compile Include="MailMessageJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecurringBundleJob.cs" />
     <Compile Include="ScheduledBundleJob.cs" />
   </ItemGroup>
   <ItemGroup>

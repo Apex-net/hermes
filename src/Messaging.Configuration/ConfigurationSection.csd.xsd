@@ -8,12 +8,17 @@
 </auto-generated>
 -->
 <xs:schema xmlns:tns="urn:Apexnet.Messaging.Configuration" elementFormDefault="qualified" targetNamespace="urn:Apexnet.Messaging.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-	<xs:element name="apexnetPushServiceReference" type="tns:Apexnet.Messaging.Configuration.ApexnetPushServiceReferenceCT" />
+	<xs:element name="ApexnetPushService" type="tns:Apexnet.Messaging.Configuration.ApexnetPushServiceCT" />
 	<xs:complexType name="Apexnet.Messaging.Configuration.ApexnetPushServiceReferenceCT">
 		<xs:attribute name="url" use="required" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Url.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Apexnet.Messaging.Configuration.ApexnetPushServiceCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="1" name="apexnetPushServiceReference" type="tns:Apexnet.Messaging.Configuration.ApexnetPushServiceReferenceCT" />
+		</xs:choice>
 	</xs:complexType>
 </xs:schema>

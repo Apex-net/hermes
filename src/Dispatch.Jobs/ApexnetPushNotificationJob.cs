@@ -9,32 +9,26 @@
     {
         private readonly ApexnetPushNotification pushNotification;
 
-        private ApexnetPushNotificationJob(ApexnetPushNotification pushNotification)
+        public ApexnetPushNotificationJob(ApexnetPushNotification pushNotification)
         {
             this.pushNotification = pushNotification;
         }
 
-        Expression<Action> IQueueable.Job
+        public Expression<Action> Operation
         {
             get
             {
-                return () => Send(this.pushNotification);
+                return () => _Run(this.pushNotification);
             }
         }
 
-        public static ApexnetPushNotificationJob FromApexnetPushNotification(ApexnetPushNotification notification)
-        {
-            return new ApexnetPushNotificationJob(notification);
-        }
-
-        // ReSharper disable MemberCanBePrivate.Global
-        public static void Send(ApexnetPushNotification notification)
+        //// ReSharper disable MemberCanBePrivate.Global
+        public static void _Run(ApexnetPushNotification notification)
         {
             var sender = new ApexnetPushNotificationSender();
             sender.Send(notification);
         }
 
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
+        //// ReSharper restore MemberCanBePrivate.Global
     }
 }

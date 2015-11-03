@@ -13,30 +13,32 @@
 
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
         public DispatchApiClient()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
         #endregion
 
         private DispatchApiClient(IRestHttpClientAsync httpService)
         {
             this.httpService = httpService ??
-                               new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "0"));
+                               new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "1"));
         }
 
-        public Task<Scheduled> Send(ScheduledBundle scheduledBundle)
+        public Task<ScheduledResponse> Schedule(ScheduledBundleRequest request)
         {
-            return this.httpService.CreateAsync<ScheduledBundle, Scheduled>("dispatch", scheduledBundle, null);
+            return this.httpService.CreateAsync<ScheduledBundleRequest, ScheduledResponse>("schedule", request, null);
+        }
+
+        public Task<EnqueuedResponse> Recur(RecurringBundleRequest request)
+        {
+            return this.httpService.CreateAsync<RecurringBundleRequest, EnqueuedResponse>("recur", request, null);
         }
 
         public Task<bool> Cancel(Guid id)
         {
-            return this.httpService.DeleteAsync(string.Format("messages/{0}", id));
+            return this.httpService.DeleteAsync(string.Format("jobs/{0}", id));
         }
     }
 }

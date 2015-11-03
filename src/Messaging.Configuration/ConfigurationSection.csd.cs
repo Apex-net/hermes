@@ -29,7 +29,7 @@ namespace Apexnet.Messaging.Configuration
         /// The XML path of the ApexnetPushServiceReference Configuration Section.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("ConfigurationSectionDesigner.CsdFileGenerator", "2.0.1.7")]
-        internal const string ApexnetPushServiceReferenceSectionPath = "apexnetPushServiceReference";
+        internal const string ApexnetPushServiceReferenceSectionPath = "ApexnetPushService/apexnetPushServiceReference";
         
         /// <summary>
         /// Gets the ApexnetPushServiceReference instance.

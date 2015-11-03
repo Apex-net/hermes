@@ -2,10 +2,8 @@ namespace Apexnet.JobQueue
 {
     using System;
 
-    public interface IScheduled
+    public interface IScheduled : IEnqueued
     {
-        Guid Id { get; set; }
-
-        DateTimeOffset Schedule { get; set; }
+        DateTimeOffset Schedule { set; }
     }
 }

@@ -3,26 +3,37 @@
     using System;
     using System.Linq.Expressions;
     using Apexnet.Dispatch.Api;
+    using Apexnet.Dispatch.Api.Annotations;
     using Apexnet.JobQueue;
     using Apexnet.JobQueue.JobQueues;
-    using Apexnet.Messaging.Mail;
-    using Apexnet.Messaging.Push;
-    using Common.Utils;
 
-    public class ScheduledBundleJob : ISchedulable
+    public class ScheduledBundleJob : BaseBundleJob<ScheduledBundleRequest>, ISchedulable
     {
-        private readonly ScheduledBundle bundle;
+        private readonly ScheduledBundleRequest request;
 
-        private ScheduledBundleJob(ScheduledBundle bundle)
+        [UsedImplicitly]
+        public ScheduledBundleJob()
+            : this(null, null)
         {
-            this.bundle = bundle;
         }
 
-        Expression<Action> IQueueable.Job
+        public ScheduledBundleJob(ScheduledBundleRequest request)
+            : this(null, request)
+        {
+            this.request = request;
+        }
+
+        private ScheduledBundleJob(IJobsManager jobsManager, ScheduledBundleRequest request)
+            : base(jobsManager ?? new HangfireJobsManager())
+        {
+            this.request = request;
+        }
+
+        public override Expression<Action> Operation
         {
             get
             {
-                return () => ScheduleBundle(this.bundle);
+                return () => this._Run(this.request);
             }
         }
 
@@ -30,41 +41,8 @@
         {
             get
             {
-                return this.bundle.Schedule ?? DateTime.Now;
+                return this.request.Schedule;
             }
-
-            set
-            {
-                this.bundle.Schedule = value;
-            }
-        }
-
-        public static ScheduledBundleJob FromScheduledBundle(ScheduledBundle bundle)
-        {
-            return new ScheduledBundleJob(bundle);
-        }
-
-        // ReSharper disable MemberCanBePrivate.Global
-        public static void ScheduleBundle(ScheduledBundle bundle)
-        {
-            var queue = new HangfireJobQueue<Enqueued, Scheduled>();
-
-            bundle.MailMessages.Each((message, i) => Send(message, queue));
-            bundle.ApexnetPushNotifications.Each((notification, i) => Send(notification, queue));
-        }
-
-        // ReSharper restore MemberCanBePrivate.Global
-        ////
-        private static void Send(MailMessage mailMessage, IJobQueue queue)
-        {
-            var job = MailMessageJob.FromMailMessage(mailMessage);
-            queue.Enqueue(job);
-        }
-
-        private static void Send(ApexnetPushNotification pushNotification, IJobQueue queue)
-        {
-            var job = ApexnetPushNotificationJob.FromApexnetPushNotification(pushNotification);
-            queue.Enqueue(job);
         }
     }
 }

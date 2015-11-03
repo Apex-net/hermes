@@ -4,36 +4,45 @@
     using System.Web.Http.Description;
     using Apexnet.Dispatch.Jobs;
     using Apexnet.JobQueue;
-    using Apexnet.JobQueue.JobQueues;
+    using Common.Annotations;
 
-    public class DispatchController : ApiController
+    public class DispatchController : BaseApiController
     {
-        private readonly IJobQueue messageJobQueue;
-
         #region TODO: replace with IoC container
 
-        // ReSharper disable UnusedMember.Global
+        [UsedImplicitly]
         public DispatchController()
             : this(null)
         {
         }
 
-        // ReSharper restore UnusedMember.Global
-        ////
-        #endregion
-
-        private DispatchController(IJobQueue messageJobQueue)
+        private DispatchController(IJobsManager jobsManager)
+            : base(jobsManager)
         {
-            this.messageJobQueue = messageJobQueue ?? new HangfireJobQueue<Enqueued, Scheduled>();
         }
 
-        [ResponseType(typeof(Scheduled))]
-        public IHttpActionResult Post([FromBody] ScheduledBundle bundle)
-        {
-            var job = ScheduledBundleJob.FromScheduledBundle(bundle);
-            var scheduled = this.messageJobQueue.Schedule(job);
+        #endregion
 
-            return this.CreatedAtRoute("DefaultApi", new { controller = "messages", id = scheduled.Id }, scheduled);
+        [Route("api/schedule")]
+        [HttpPost]
+        [ResponseType(typeof(ScheduledResponse))]
+        public IHttpActionResult Schedule([FromBody] ScheduledBundleRequest request)
+        {
+            var job = new ScheduledBundleJob(request);
+            var response = this.JobsManager.Schedule<ScheduledBundleJob, ScheduledResponse>(job);
+
+            return this.CreatedAtRoute("DefaultApi", new { controller = "jobs", id = response.Id }, response);
+        }
+
+        [Route("api/recur")]
+        [HttpPost]
+        [ResponseType(typeof(EnqueuedResponse))]
+        public IHttpActionResult Recur([FromBody] RecurringBundleRequest request)
+        {
+            var job = new RecurringBundleJob(request);
+            var response = this.JobsManager.Recur<RecurringBundleJob, EnqueuedResponse>(job);
+
+            return this.CreatedAtRoute("DefaultApi", new { controller = "jobs", id = response.Id }, response);
         }
     }
 }

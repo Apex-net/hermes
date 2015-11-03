@@ -96,7 +96,9 @@ Configure `smtp` settings only if you intend to send e-mail notifications using 
 Configure `apexnetPushServiceReference` settings only if you intend to send push notifications using Apex-net proprietary push notification service. (Installed and configured separately:)
 
 ```xml
-  <apexnetPushServiceReference url="{APEXNET_PUSH_SERVICE_URL}" xmlns="urn:Apexnet.Messaging.Configuration"/>
+  <ApexnetPushService xmlns="urn:Apexnet.Messaging.Configuration">
+    <apexnetPushServiceReference url="{APEXNET_PUSH_SERVICE_URL}" />
+  </ApexnetPushService>
 ```
 
 > :information_source:
