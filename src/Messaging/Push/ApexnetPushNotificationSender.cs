@@ -23,12 +23,14 @@
 
         public void Send(ApexnetPushNotification notification)
         {
-            this.notificatore.SendNotification(
+            this.notificatore.SendPush(
                 notification.AuthKey,
                 notification.AppKey,
                 notification.Message,
                 notification.UserName,
                 notification.Sound,
+                notification.CustomField1,
+                notification.CustomField2,
                 notification.BadgeCount);
         }
 
