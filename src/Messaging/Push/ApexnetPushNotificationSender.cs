@@ -23,7 +23,7 @@
 
         public void Send(ApexnetPushNotification notification)
         {
-            this.notificatore.SendNotification(
+            this.notificatore.SendPush(
                 notification.AuthKey,
                 notification.AppKey,
                 notification.Message,
