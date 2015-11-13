@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgendaModel.Store" Alias="Self" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
+  <EntityContainer Name="AgendaModelStoreContainer">
+    <EntitySet Name="AGE_ACCESSI" EntityType="AgendaModel.Store.AGE_ACCESSI" store:Type="Tables" />
+    <EntitySet Name="AGE_UTENTI" EntityType="AgendaModel.Store.AGE_UTENTI" store:Type="Tables" />
+    <EntitySet Name="AGE_QUERY_CUSTOM" EntityType="AgendaModel.Store.AGE_QUERY_CUSTOM" store:Type="Tables" />
+    <EntitySet Name="AGE_QUERY_FILTRI" EntityType="AgendaModel.Store.AGE_QUERY_FILTRI" store:Type="Tables" />
+    <AssociationSet Name="FK_UtentiAccessiUtente" Association="AgendaModel.Store.FK_UtentiAccessiUtente">
+      <End Role="AGE_UTENTI" EntitySet="AGE_UTENTI" />
+      <End Role="AccessiUtente" EntitySet="AGE_ACCESSI" />
+    </AssociationSet>
+    <AssociationSet Name="QueryCustomFiltri" Association="AgendaModel.Store.QueryCustomFiltri">
+      <End Role="VistaAgenda" EntitySet="AGE_QUERY_CUSTOM" />
+      <End Role="VistaCondizione" EntitySet="AGE_QUERY_FILTRI" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AGE_ACCESSI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="number" Nullable="false" Precision="10" StoreGeneratedPattern="Identity" />
+    <Property Name="USER_ID" Type="varchar2" Nullable="false" MaxLength="255" />
+    <Property Name="DataAccesso" Type="date" Nullable="false" />
+    <Property Name="ServerVariables" Type="nvarchar2" Nullable="true" MaxLength="2000" />
+    <Property Name="Modulo" Type="nvarchar2" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="AGE_UTENTI">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="varchar2" Nullable="false" MaxLength="255" />
+    <Property Name="Nome" Type="nvarchar2" Nullable="true" MaxLength="50" />
+    <Property Name="Cognome" Type="nvarchar2" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AGE_QUERY_CUSTOM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="number" Nullable="false" Precision="10" StoreGeneratedPattern="Identity" />
+    <Property Name="Codice" Type="nvarchar2" Nullable="false" MaxLength="80" />
+    <Property Name="ColumnsList" Type="nvarchar2" Nullable="true" MaxLength="2000" />
+    <Property Name="Source" Type="nvarchar2" Nullable="false" MaxLength="2000" />
+    <Property Name="Descrizione" Type="nvarchar2" Nullable="false" MaxLength="255" />
+    <Property Name="Modulo" Type="nvarchar2" Nullable="true" MaxLength="255" />
+    <Property Name="Note" Type="nvarchar2" Nullable="true" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="AGE_QUERY_FILTRI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="number" Nullable="false" Precision="10" StoreGeneratedPattern="Identity" />
+    <Property Name="QueryCustomId" Type="number" Nullable="false" Precision="10" />
+    <Property Name="Codice" Type="nvarchar2" Nullable="false" MaxLength="80" />
+    <Property Name="Filtro" Type="nvarchar2" Nullable="false" MaxLength="2000" />
+    <Property Name="Descrizione" Type="nvarchar2" Nullable="false" MaxLength="255" />
+    <Property Name="Note" Type="nvarchar2" Nullable="true" MaxLength="2000" />
+  </EntityType>
+  <Association Name="FK_UtentiAccessiUtente">
+    <End Role="AGE_UTENTI" Type="AgendaModel.Store.AGE_UTENTI" Multiplicity="1" />
+    <End Role="AccessiUtente" Type="AgendaModel.Store.AGE_ACCESSI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGE_UTENTI">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AccessiUtente">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QueryCustomFiltri">
+    <End Role="VistaAgenda" Type="AgendaModel.Store.AGE_QUERY_CUSTOM" Multiplicity="1" />
+    <End Role="VistaCondizione" Type="AgendaModel.Store.AGE_QUERY_FILTRI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VistaAgenda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VistaCondizione">
+        <PropertyRef Name="QueryCustomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgendaModelStoreContainer" CdmEntityContainer="AgendaContext">
+    <EntitySetMapping Name="AGE_ACCESSI">
+      <EntityTypeMapping TypeName="AgendaModel.AccessiUtente">
+        <MappingFragment StoreEntitySet="AGE_ACCESSI">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="DataAccesso" ColumnName="DataAccesso" />
+          <ScalarProperty Name="ServerVariables" ColumnName="ServerVariables" />
+          <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AGE_UTENTI">
+      <EntityTypeMapping TypeName="AgendaModel.Utenti">
+        <MappingFragment StoreEntitySet="AGE_UTENTI">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Cognome" ColumnName="Cognome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AGE_QUERY_CUSTOM">
+      <EntityTypeMapping TypeName="AgendaModel.QueryCustom">
+        <MappingFragment StoreEntitySet="AGE_QUERY_CUSTOM">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Codice" ColumnName="Codice" />
+          <ScalarProperty Name="ColumnsList" ColumnName="ColumnsList" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+          <ScalarProperty Name="Modulo" ColumnName="Modulo" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AGE_QUERY_FILTRI">
+      <EntityTypeMapping TypeName="AgendaModel.QueryFiltri">
+        <MappingFragment StoreEntitySet="AGE_QUERY_FILTRI">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QueryCustomId" ColumnName="QueryCustomId" />
+          <ScalarProperty Name="Codice" ColumnName="Codice" />
+          <ScalarProperty Name="Filtro" ColumnName="Filtro" />
+          <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="AgendaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="AgendaContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AGE_ACCESSI" EntityType="AgendaModel.AccessiUtente" />
+    <EntitySet Name="AGE_UTENTI" EntityType="AgendaModel.Utenti" />
+    <AssociationSet Name="FK_UtentiAccessiUtente" Association="AgendaModel.FK_UtentiAccessiUtente">
+      <End Role="AGE_UTENTI" EntitySet="AGE_UTENTI" />
+      <End Role="AccessiUtente" EntitySet="AGE_ACCESSI" />
+    </AssociationSet>
+    <EntitySet Name="AGE_QUERY_CUSTOM" EntityType="AgendaModel.QueryCustom" />
+    <EntitySet Name="AGE_QUERY_FILTRI" EntityType="AgendaModel.QueryFiltri" />
+    <AssociationSet Name="QueryCustomFiltri" Association="AgendaModel.QueryCustomFiltri">
+      <End Role="VistaAgenda" EntitySet="AGE_QUERY_CUSTOM" />
+      <End Role="VistaCondizione" EntitySet="AGE_QUERY_FILTRI" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="AccessiUtente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="USER_ID" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="DataAccesso" Nullable="false" />
+    <Property Type="String" Name="ServerVariables" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Modulo" Nullable="true" MaxLength="255" />
+    <NavigationProperty Name="AGE_UTENTI" Relationship="AgendaModel.FK_UtentiAccessiUtente" FromRole="AccessiUtente" ToRole="AGE_UTENTI" />
+  </EntityType>
+  <EntityType Name="Utenti">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="String" Name="UserId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Nome" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Cognome" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AGE_ACCESSI" Relationship="AgendaModel.FK_UtentiAccessiUtente" FromRole="AGE_UTENTI" ToRole="AccessiUtente" />
+  </EntityType>
+  <Association Name="FK_UtentiAccessiUtente">
+    <End Type="AgendaModel.Utenti" Role="AGE_UTENTI" Multiplicity="1" />
+    <End Type="AgendaModel.AccessiUtente" Role="AccessiUtente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGE_UTENTI">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AccessiUtente">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QueryCustom">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Codice" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false">
+      <Documentation>
+        <Summary>codice univoco</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="ColumnsList" Nullable="true" MaxLength="2000" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>contenuto della select (*, CODICE, ANNO, ...), se vuoto allora è un * implicito</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="Source" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>corrisponde alla from, quindi da dove leggere i dati (es. ADM_CONCORSI)</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="Descrizione" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>descrizione interna di spiegazione</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="Modulo" Nullable="true" MaxLength="255">
+      <Documentation>
+        <Summary>codice del modulo progetto (es. ADM, CLK,...)</Summary>
+      </Documentation>
+    </Property>
+    <NavigationProperty Name="VistaCondizione" Relationship="AgendaModel.QueryCustomFiltri" FromRole="VistaAgenda" ToRole="VistaCondizione" />
+    <Property Type="String" Name="Note" Nullable="true" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QueryFiltri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="VistaAgenda" Relationship="AgendaModel.QueryCustomFiltri" FromRole="VistaCondizione" ToRole="VistaAgenda" />
+    <Property Type="Int32" Name="QueryCustomId" Nullable="false" />
+    <Property Type="String" Name="Codice" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Filtro" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>condizione sql senza la clausula di where (es. ANNO=2015 AND CODICE='a')</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="Descrizione" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true">
+      <Documentation>
+        <Summary>descrizione interna di spiegazione</Summary>
+      </Documentation>
+    </Property>
+    <Property Type="String" Name="Note" Nullable="true" MaxLength="2000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="QueryCustomFiltri">
+    <End Type="AgendaModel.QueryCustom" Role="VistaAgenda" Multiplicity="1" />
+    <End Type="AgendaModel.QueryFiltri" Role="VistaCondizione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VistaAgenda">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="VistaCondizione">
+        <PropertyRef Name="QueryCustomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
