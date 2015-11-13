@@ -1,7 +1,6 @@
 ﻿namespace Apexnet.Messaging.Mail
 {
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using Newtonsoft.Json;
 
     public class MailMessage
