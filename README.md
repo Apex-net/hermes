@@ -122,7 +122,7 @@ Make sure;
 * `Accept: application/vnd.dispatch+json; version=0` contains correct server version
 
 ```bash
-curl -X "POST" "<Base URI>/api/dispatch" \
+curl -X "POST" "<Base URI>/api/schedule" \
         -H "Accept: application/vnd.dispatch+json; version=0" \
         -d $'{
   "Schedule": "2000-01-01T00:00:00.0000000+00:00",
@@ -169,7 +169,7 @@ curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Ty
       "BadgeCount":1
     }
   ]
-}' '<Base URI>/api/dispatch'
+}' '<Base URI>/api/schedule'
 ```
 
 
