@@ -3,9 +3,9 @@
     using System;
     using System.Threading.Tasks;
     using Apexnet.Dispatch.Api.Client.Configuration;
-    using Common.Data_Access.Services;
-    using Common.Data_Transfer;
-    using Common.Protocols;
+    using NextCommon.Http.Data_Access.Services;
+    using NextCommon.Http.Data_Transfer;
+    using NextCommon.Http.Protocols;
 
     public class DispatchApiClient
     {
