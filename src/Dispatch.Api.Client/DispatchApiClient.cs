@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Apexnet.Dispatch.Api.Client.Configuration;
+    using Client.Configuration;
     using NextCommon.Http.Data_Access.Services;
     using NextCommon.Http.Data_Transfer;
     using NextCommon.Http.Protocols;
