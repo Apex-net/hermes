@@ -25,7 +25,7 @@
             request.HttpRequests.Add(NewHttpRequestMessage());
             request.ApexnetPushNotifications.Add(NewApexnetPushNotification());
 
-            var response = await this.client.Schedule(request)
+            var response = await this.client.ScheduleAsync(request)
                                      .ConfigureAwait(false);
 
             Assert.NotNull(response.Id);
@@ -44,7 +44,7 @@
             request.HttpRequests.Add(NewHttpRequestMessage());
             request.ApexnetPushNotifications.Add(NewApexnetPushNotification());
 
-            var response = await this.client.Recur(request)
+            var response = await this.client.RecurAsync(request)
                                      .ConfigureAwait(false);
 
             Assert.NotNull(response.Id);
@@ -56,7 +56,7 @@
         {
             var id = Guid.Parse("025a3a20-3514-42a5-ac66-f01084539d87");
 
-            var result = await this.client.Cancel(id)
+            var result = await this.client.CancelAsync(id)
                                    .ConfigureAwait(false);
 
             Assert.True(result);
