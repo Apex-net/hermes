@@ -183,5 +183,4 @@ Client SDK
 
 #### Usage
 
-> _:construction_worker:
-> This section is currently missing_
+Check out [these tests](https://github.com/wedoit-io/hermes/blob/master/src/Dispatch.Api.Client.Tests/UnitTest1.cs).
