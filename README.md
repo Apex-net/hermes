@@ -125,7 +125,8 @@ Make sure;
 curl -X "POST" "<Base URI>/api/schedule" \
      -H "Accept: application/vnd.dispatch+json; version=<version>" \
      -H 'Content-Type: application/json; charset=utf-8' \
-     -d $'{
+     -d $'
+{
   "Schedule": "2000-01-01T00:00:00.0000000+00:00",
   "MailMessages": [
     {
@@ -161,7 +162,9 @@ Make sure;
 ```bash
 curl -X "POST" "<Base URI>/api/schedule" \
      -H 'Accept: application/vnd.dispatch+json; version=<version>' \
-     -H 'Content-Type: application/json; charset=utf-8' -d '{
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d '
+{
   "Schedule":"2000-01-01T00:00:00.0000000+00:00",
   "ApexnetPushNotifications":[
     {
