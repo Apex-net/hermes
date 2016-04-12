@@ -7,8 +7,6 @@
 
     public class JobsController : BaseApiController
     {
-        #region TODO: replace with IoC container
-
         [UsedImplicitly]
         public JobsController()
             : this(null)
@@ -19,8 +17,6 @@
             : base(jobsManager)
         {
         }
-
-        #endregion
 
         [HttpDelete]
         public IHttpActionResult Delete(Guid id)

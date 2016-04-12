@@ -8,8 +8,6 @@
 
     public class DispatchController : BaseApiController
     {
-        #region TODO: replace with IoC container
-
         [UsedImplicitly]
         public DispatchController()
             : this(null)
@@ -20,8 +18,6 @@
             : base(jobsManager)
         {
         }
-
-        #endregion
 
         [Route("api/schedule")]
         [HttpPost]

@@ -11,14 +11,10 @@
     {
         private readonly IRestHttpClientAsync httpService;
 
-        #region TODO: replace with IoC container
-
         public DispatchApiClient()
             : this(null)
         {
         }
-
-        #endregion
 
         private DispatchApiClient(IRestHttpClientAsync httpService)
         {
