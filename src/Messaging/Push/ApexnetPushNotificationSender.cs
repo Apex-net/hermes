@@ -7,14 +7,10 @@
     {
         private readonly Notificatore notificatore;
 
-        #region TODO: replace with IoC container
-
         public ApexnetPushNotificationSender()
             : this(null)
         {
         }
-
-        #endregion
 
         private ApexnetPushNotificationSender(Notificatore notificatore)
         {

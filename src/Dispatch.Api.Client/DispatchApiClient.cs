@@ -11,19 +11,19 @@
     {
         private readonly IRestHttpClientAsync httpService;
 
-        #region TODO: replace with IoC container
-
         public DispatchApiClient()
-            : this(null)
+            : this((IRestHttpClientAsync)null)
         {
         }
 
-        #endregion
+        public DispatchApiClient(string dispatchApiUrl)
+            : this(CreateHttpService(dispatchApiUrl))
+        {
+        }
 
         private DispatchApiClient(IRestHttpClientAsync httpService)
         {
-            this.httpService = httpService ??
-                               new RestHttpService(new DefaultHttpClient(DispatchApi.Instance.Url, "dispatch", "1"));
+            this.httpService = httpService ?? CreateHttpService(DispatchApi.Instance.Url);
         }
 
         public Task<ScheduledResponse> ScheduleAsync(ScheduledBundleRequest request)
@@ -40,5 +40,14 @@
         {
             return this.httpService.DeleteAsync(string.Format("jobs/{0}", id));
         }
+
+        #region /// internal ///////////////////////////////////////////////////
+
+        private static RestHttpService CreateHttpService(string baseUri)
+        {
+            return new RestHttpService(new DefaultHttpClient(baseUri, "dispatch", "1"));
+        }
+
+        #endregion
     }
 }

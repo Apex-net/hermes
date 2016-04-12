@@ -8,14 +8,10 @@
     {
         private readonly SmtpClient smtpClient;
 
-        #region TODO: replace with IoC container
-
         public MailMessageSender()
             : this(null)
         {
         }
-
-        #endregion
 
         private MailMessageSender(SmtpClient smtpClient)
         {
