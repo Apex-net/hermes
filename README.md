@@ -119,13 +119,13 @@ Make sure;
 
 * replacing `you@example.com` below with a valid e-mail address
 * replacing `<Base URI>` with where you configured IIS to serve Hermes server
-* `Accept: application/vnd.dispatch+json; version=1` contains correct server version
+* `Accept: application/vnd.dispatch+json; version=<version>` contains correct server version
 
 ```bash
 curl -X "POST" "<Base URI>/api/schedule" \
-        -H "Accept: application/vnd.dispatch+json; version=0" \
-        -H 'Content-Type: application/json; charset=utf-8' \
-        -d $'{
+     -H "Accept: application/vnd.dispatch+json; version=<version>" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
   "Schedule": "2000-01-01T00:00:00.0000000+00:00",
   "MailMessages": [
     {
@@ -156,10 +156,12 @@ Make sure;
 
 * replacing `<Authentication key>`, `<Application key>` and `<Username>` below with a valid values
 * replacing `<Base URI>` with where you configured IIS to serve Hermes server
-* `Accept: application/vnd.dispatch+json; version=0` contains correct server version
+* `Accept: application/vnd.dispatch+json; version=<version>` contains correct server version
 
 ```bash
-curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Type: application/json; charset=utf-8' -d '{
+curl -X "POST" "<Base URI>/api/schedule" \
+     -H 'Accept: application/vnd.dispatch+json; version=<version>' \
+     -H 'Content-Type: application/json; charset=utf-8' -d '{
   "Schedule":"2000-01-01T00:00:00.0000000+00:00",
   "ApexnetPushNotifications":[
     {
@@ -170,7 +172,7 @@ curl -XPOST -H 'Accept: application/vnd.dispatch+json; version=0' -H 'Content-Ty
       "BadgeCount":1
     }
   ]
-}' '<Base URI>/api/schedule'
+}'
 ```
 
 
