@@ -148,6 +148,31 @@ curl -X "POST" "<Base URI>/api/schedule" \
 }'
 ```
 
+#### Schedule a recurrent task
+
+Make sure;
+
+* replacing `<Base URI>` with where you configured IIS to serve Hermes server
+* replacing `<HTTP request>` with the URI of your http request
+* see [CRON expressions](https://en.wikipedia.org/wiki/Cron#CRON_expression) for scheduling details
+* `Accept: application/vnd.dispatch+json; version=<version>` contains correct server version
+
+```bash
+curl -X "POST" "<Base URI>/api/recur" \
+     -H "Accept: application/vnd.dispatch+json; version=<version>" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'
+{
+  "CronExpression": "*/2 * * * *",
+  "HttpRequests": [
+    {
+      "Method": "HEAD",
+      "RequestUri": "<HTTP request>"
+    }
+  ]
+}'
+```
+
 #### Send a push notification
 
 > :warning:
