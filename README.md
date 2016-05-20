@@ -155,7 +155,7 @@ Make sure;
 * replacing `<Base URI>` with where you configured IIS to serve Hermes server
 * replacing `<HTTP request>` with the URI of your http request
 * see [CRON expressions](https://en.wikipedia.org/wiki/Cron#CRON_expression) for scheduling details
-* see [CRON maker](http://www.cronmaker.com/) for generate Cron expression
+* see [CRON example](https://code.google.com/archive/p/ncrontab/wikis/CrontabExamples.wiki) for generate Cron expression
 * `Accept: application/vnd.dispatch+json; version=<version>` contains correct server version
 
 ```bash
