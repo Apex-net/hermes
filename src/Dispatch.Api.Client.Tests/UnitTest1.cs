@@ -1,6 +1,7 @@
 ﻿namespace Dispatch.Api.Client.Tests
 {
     using System;
+    using System.IO;
     using Apexnet.Dispatch.Api;
     using Apexnet.Messaging.Http;
     using Apexnet.Messaging.Mail;
@@ -62,6 +63,23 @@
             Assert.True(result);
         }
 
+        [Fact]
+        [UsedImplicitly]
+        public async void Test_MailAttachments()
+        {
+            var schedule = new DateTimeOffset(DateTime.Now);
+
+            var request = new ScheduledBundleRequest(schedule);
+
+            request.MailMessages.Add(NewMailMessageWithAttachments());
+
+            var response = await this.client.ScheduleAsync(request)
+                                     .ConfigureAwait(false);
+
+            Assert.NotNull(response.Id);
+            Assert.Equal(schedule, response.Schedule);
+        }
+
         #region /// internal ///////////////////////////////////////////////////
 
         private static MailMessage NewMailMessage()
@@ -74,6 +92,30 @@
             const bool IsBodyHtml = true;
 
             return new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+        }
+
+        private static MailMessage NewMailMessageWithAttachments()
+        {
+            const string Subject = "Hermes: test";
+            const string Body =
+                "<h1>Titolo</h1>" +
+                "<p>Questa è una prova di <a href=\"https://github.com/Apex-net/hermes\">Hermes</a>.</p>" +
+                "<p>Ignorare, grazie.</p>";
+            const bool IsBodyHtml = true;
+
+            var attachment1 = new Attachment(
+                Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\ddd.jpg")),
+                "ddd.jpg",
+                System.Net.Mime.MediaTypeNames.Image.Jpeg);
+            var attachment2 = new Attachment(
+                Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\Admissions.pdf")),
+                "Admissions.pdf",
+                System.Net.Mime.MediaTypeNames.Application.Pdf);
+
+            var mailMessage = new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+            mailMessage.Attachments.Add(attachment1);
+            mailMessage.Attachments.Add(attachment2);
+            return mailMessage;
         }
 
         private static HttpRequestMessage NewHttpRequestMessage()

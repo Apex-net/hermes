@@ -27,6 +27,7 @@
             this.Subject = subject;
             this.Body = body;
             this.IsBodyHtml = isBodyHtml;
+            this.Attachments = new List<Attachment>();
         }
 
         #endregion
@@ -44,5 +45,7 @@
         public string Body { get; private set; }
 
         public bool IsBodyHtml { get; private set; }
+
+        public List<Attachment> Attachments { get; private set; }
     }
 }

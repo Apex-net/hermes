@@ -1,6 +1,7 @@
 ﻿namespace Apexnet.Messaging.Mail
 {
     using System;
+    using System.IO;
     using System.Net.Mail;
     using Common.Utils;
 
@@ -32,6 +33,11 @@
             mailMessage.Subject = message.Subject;
             mailMessage.Body = message.Body;
             mailMessage.IsBodyHtml = message.IsBodyHtml;
+            foreach (var attachment in message.Attachments)
+            {
+                var stream = new MemoryStream(Convert.FromBase64String(attachment.Content));
+                mailMessage.Attachments.Add(new System.Net.Mail.Attachment(stream, attachment.FileName, attachment.MediaType));
+            }
 
             this.smtpClient.Send(mailMessage);
         }

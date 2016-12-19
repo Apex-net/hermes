@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <id>Apexnet.Dispatch.Api.Models</id>
-        <version>0.3.0</version>
+        <version>0.4.0</version>
         <authors>Ali Servet Donmez</authors>
-        <projectUrl>https://github.com/apex-net/hermes</projectUrl>
+        <projectUrl>https://github.com/wedoit-io/hermes</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Dispatch API Models Library</description>
         <dependencies>
             <dependency id="Apexnet.JobQueue.Models" version="0.2.0" />
-            <dependency id="Apexnet.Messaging.Models" version="0.3.0" />
+            <dependency id="Apexnet.Messaging.Models" version="0.4.0" />
         </dependencies>
     </metadata>
     <files>
