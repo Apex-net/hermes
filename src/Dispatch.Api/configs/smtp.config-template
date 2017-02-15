@@ -1,3 +1,6 @@
-<smtp from="">
-  <network defaultCredentials="false" host="smtp.gmail.com" password="0123456789" port="587" userName="user@example.com" enableSsl="true" />
+<smtp from="" deliveryMethod="specifiedPickupDirectory">
+  <specifiedPickupDirectory pickupDirectoryLocation="C:\Temp\maildrop"></specifiedPickupDirectory>
 </smtp>
+<!-- <smtp from="" deliveryMethod="network">
+  <network defaultCredentials="false" host="smtp.gmail.com" password="0123456789" port="587" userName="user@example.com" enableSsl="true" />
+</smtp> -->
