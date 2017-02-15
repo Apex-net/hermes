@@ -1,14 +1,10 @@
 hermes
 ======
 
-Dispatch Notification Suite
+Dispatch Notification Suite.
 
 
-Server
-------
-
-
-### How to Install
+## How to install
 
 0. Go to [releases](https://github.com/Apex-net/hermes/releases)
 0. Download latest version of `dispatch/api/v*.7z`
@@ -16,45 +12,36 @@ Server
 0. Convert extracted folder to Application in IIS (Target framework: **.NET 4.5**)
 
 
-### Configuration
-
-0. Open `Web.config` file inside IIS application folder you previously created using a plain text editor
-0. Configure [mandatory settings](#mandatory-settings)
-0. Configure [optional settings](#optional-settings)
-
-#### Mandatory Settings
+## Configuration
 
 The only mandatory configuration is setting available storage option via `JobStorageName` in application settings:
 
 ```xml
-  <applicationSettings>
-    <Apexnet.Dispatch.Api.Properties.Settings>
-      <setting name="JobStorageName" serializeAs="String">
-        <value>hangfire-redis</value>
-      </setting>
-    </Apexnet.Dispatch.Api.Properties.Settings>
-  </applicationSettings>
+<applicationSettings>
+  <Apexnet.Dispatch.Api.Properties.Settings>
+    <setting name="JobStorageName" serializeAs="String">
+      <value>hangfire-memory</value>
+    </setting>
+  </Apexnet.Dispatch.Api.Properties.Settings>
+</applicationSettings>
 ```
 
-Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`. As default `hangfire-redis` is selected.
+Available values for `JobStorageName` are: `hangfire-redis` or `hangfire-memory`.
 
-> :warning:
-> `hangfire-redis` storage option requires additional configurations. See [redis storage](#redis-storage) section.
+### Memory storage
 
-#### Optional Settings
+No configuration is necessary.
 
-##### Storage Options
-
-###### Redis Storage
+### Redis storage
 
 Complete definition for `redisStorage` is:
 
 ```xml
-  <HangfireStorage xmlns="urn:Apexnet.JobQueue.Configuration">
-    <redisStorage connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}">
-      <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
-    </redisStorage>
-  </HangfireStorage>
+<HangfireStorage xmlns="urn:Apexnet.JobQueue.Configuration">
+  <redisStorage connectionString="{HANGFIRE_STORAGE_REDIS_CONNECTION}">
+    <redisStorageOptions db="..." invisibilityTimeout="..." prefix="..."/>
+  </redisStorage>
+</HangfireStorage>
 ```
 
 > :information_source:
@@ -68,13 +55,7 @@ Complete definition for `redisStorage` is:
 | `invisibilityTimeout` | a time span value (default: 30 minutes).
 | `prefix`              | unique redis environment prefix (default: `hangfire:`)
 
-###### Memory Storage
-
-No configuration is necessary.
-
-##### Notification Options
-
-###### E-mail Notifications
+### E-mail Notifications
 
 Configure `smtp` settings only if you intend to send e-mail notifications using hermes:
 
@@ -91,7 +72,7 @@ Configure `smtp` settings only if you intend to send e-mail notifications using 
 
 [Read MSDN](https://msdn.microsoft.com/en-us/library/ms164240.aspx) for a complete definition of this configuration setting.
 
-###### Apex-net Push Notifications
+### Apex-net push notifications
 
 Configure `apexnetPushServiceReference` settings only if you intend to send push notifications using Apex-net proprietary push notification service. (Installed and configured separately:)
 
@@ -109,11 +90,11 @@ Configure `apexnetPushServiceReference` settings only if you intend to send push
 | `url`    | the only **mandatory** configuration that is the base URL for Apex-net Push Notification REST APIs
 
 
-### Verify Server Installation
+## Verify server installation
 
 Given `<Base URI>` (e.g., `http://example.com/hermes`) where you configured IIS to serve Hermes server, default Hangfire dashboard should appear at `<Base URI>/jobs`.
 
-#### Send an e-mail notification
+### Send an e-mail notification
 
 Make sure;
 
@@ -148,7 +129,7 @@ curl -X "POST" "<Base URI>/api/schedule" \
 }'
 ```
 
-#### Schedule a recurrent task
+### Schedule a recurrent task
 
 Make sure;
 
@@ -173,7 +154,7 @@ curl -X "POST" "<Base URI>/api/recur" \
 }'
 ```
 
-#### Send a push notification
+### Send a push notification
 
 > :warning:
 > This feature requires you have access to Apex-net proprietary push notification service!
@@ -204,14 +185,9 @@ curl -X "POST" "<Base URI>/api/schedule" \
 ```
 
 
-Client SDK
-----------
-
-### C#/.NET
+## C#/.NET Client SDK
 
 0. [Install NuGet](https://docs.nuget.org/consume/installing-nuget)
 0. Install [Apexnet.Dispatch.Api.Client](http://www.nuget.org/packages/Apexnet.Dispatch.Api.Client/) via NuGet
 
-#### Usage
-
-Check out [these tests](https://github.com/wedoit-io/hermes/blob/master/src/Dispatch.Api.Client.Tests/UnitTest1.cs).
+For example usages check out [these tests](https://github.com/wedoit-io/hermes/blob/master/src/Dispatch.Api.Client.Tests/UnitTest1.cs).
