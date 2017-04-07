@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Threading.Tasks;
     using Apexnet.Dispatch.Api;
     using Apexnet.Messaging.Http;
     using Apexnet.Messaging.Mail;
@@ -16,7 +17,7 @@
 
         [Fact]
         [UsedImplicitly]
-        public async void Test_Schedule()
+        public async Task Test_Schedule()
         {
             var schedule = new DateTimeOffset(DateTime.Now);
 
@@ -35,7 +36,7 @@
 
         [Fact]
         [UsedImplicitly]
-        public async void Test_Recur()
+        public async Task Test_Recur()
         {
             const string EveryMinute = "*/1 * * * *";
 
@@ -53,7 +54,7 @@
 
         [Fact]
         [UsedImplicitly]
-        public async void Test_Delete()
+        public async Task Test_Delete()
         {
             var id = Guid.Parse("025a3a20-3514-42a5-ac66-f01084539d87");
 
@@ -65,7 +66,7 @@
 
         [Fact]
         [UsedImplicitly]
-        public async void Test_MailAttachments()
+        public async Task Test_MailAttachments()
         {
             var schedule = new DateTimeOffset(DateTime.Now);
 
