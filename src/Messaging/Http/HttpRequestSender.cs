@@ -8,13 +8,13 @@ namespace Apexnet.Messaging.Http
     {
         private static readonly Dictionary<string, HttpMethod> HttpMethodsMapping = new Dictionary<string, HttpMethod>
         {
-            { "DELETE", HttpMethod.Delete }, 
-            { "GET", HttpMethod.Get }, 
-            { "HEAD", HttpMethod.Head }, 
-            { "OPTIONS", HttpMethod.Options }, 
-            { "POST", HttpMethod.Post }, 
-            { "PUT", HttpMethod.Put }, 
-            { "TRACE", HttpMethod.Trace }, 
+            { "DELETE", HttpMethod.Delete },
+            { "GET", HttpMethod.Get },
+            { "HEAD", HttpMethod.Head },
+            { "OPTIONS", HttpMethod.Options },
+            { "POST", HttpMethod.Post },
+            { "PUT", HttpMethod.Put },
+            { "TRACE", HttpMethod.Trace },
         };
 
         private readonly HttpClient httpClient;
@@ -22,9 +22,7 @@ namespace Apexnet.Messaging.Http
         #region TODO: replace with IoC container
 
         public HttpRequestSender()
-            : this(null)
-        {
-        }
+            : this(null) { }
 
         #endregion
 

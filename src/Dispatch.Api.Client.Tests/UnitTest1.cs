@@ -104,14 +104,17 @@
                 "<p>Ignorare, grazie.</p>";
             const bool IsBodyHtml = true;
 
-            var attachment1 = new Attachment(
-                Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\ddd.jpg")),
-                "ddd.jpg",
-                System.Net.Mime.MediaTypeNames.Image.Jpeg);
-            var attachment2 = new Attachment(
-                Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\Admissions.pdf")),
-                "Admissions.pdf",
-                System.Net.Mime.MediaTypeNames.Application.Pdf);
+            var attachment1 =
+                new Attachment(
+                    Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\ddd.jpg")),
+                    "ddd.jpg",
+                    System.Net.Mime.MediaTypeNames.Image.Jpeg);
+            var attachment2 =
+                new Attachment(
+                    Convert.ToBase64String(
+                        File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\Admissions.pdf")),
+                    "Admissions.pdf",
+                    System.Net.Mime.MediaTypeNames.Application.Pdf);
 
             var mailMessage = new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
             mailMessage.Attachments.Add(attachment1);
