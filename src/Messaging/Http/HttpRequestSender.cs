@@ -3,6 +3,8 @@ namespace Apexnet.Messaging.Http
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
 
     public class HttpRequestSender : IDisposable
     {
@@ -33,10 +35,21 @@ namespace Apexnet.Messaging.Http
 
         public void Send(HttpRequestMessage message)
         {
-            var httpRequestMessage = new System.Net.Http.HttpRequestMessage(
-                HttpMethodsMapping[message.Method.ToUpperInvariant()],
-                message.RequestUri);
+            var requestUri = new Uri(message.RequestUri);
 
+            var httpRequestMessage =
+                new System.Net.Http.HttpRequestMessage(
+                    HttpMethodsMapping[message.Method.ToUpperInvariant()],
+                    requestUri);
+
+            if (!string.IsNullOrWhiteSpace(requestUri.UserInfo))
+            {
+                httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue(
+                    "Basic",
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(requestUri.UserInfo)));
+            }
+
+            // This will wait Taks to complete, but we won't know if the request "succeeded" or "failed".
             this.httpClient.SendAsync(httpRequestMessage)
                 .Wait();
         }

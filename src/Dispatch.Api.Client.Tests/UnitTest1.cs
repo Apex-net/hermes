@@ -66,6 +66,23 @@
 
         [Fact]
         [UsedImplicitly]
+        public async Task Test_BasicAuth()
+        {
+            var schedule = new DateTimeOffset(DateTime.Now);
+
+            var request = new ScheduledBundleRequest(schedule);
+
+            request.HttpRequests.Add(NewHttpRequestMessageWithBasicAuth());
+
+            var response = await this.client.ScheduleAsync(request)
+                                     .ConfigureAwait(false);
+
+            Assert.NotNull(response.Id);
+            Assert.Equal(schedule, response.Schedule);
+        }
+
+        [Fact]
+        [UsedImplicitly]
         public async Task Test_MailAttachments()
         {
             var schedule = new DateTimeOffset(DateTime.Now);
@@ -125,6 +142,11 @@
         private static HttpRequestMessage NewHttpRequestMessage()
         {
             return new HttpRequestMessage("HEAD", "http://requestb.in/188o2xj1");
+        }
+
+        private static HttpRequestMessage NewHttpRequestMessageWithBasicAuth()
+        {
+            return new HttpRequestMessage("HEAD", "http://user:pass@requestb.in/1lq1vzu1");
         }
 
         private static ApexnetPushNotification NewApexnetPushNotification()
