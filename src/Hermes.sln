@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 14.0.25420.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatch.Api", "Dispatch.Api\Dispatch.Api.csproj", "{249988F8-AAAD-4BF3-9E8B-F6A445EEC9F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dispatch.Api.Models", "Dispatch.Api.Models\Dispatch.Api.Models.csproj", "{37814798-14B0-4E08-82A0-66A5B96176C1}"
