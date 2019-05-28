@@ -109,7 +109,7 @@
                 "<p>Ignorare, grazie.</p>";
             const bool IsBodyHtml = true;
 
-            return new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+            return new MailMessage(AddressBook.Andrea, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
         }
 
         private static MailMessage NewMailMessageWithAttachments()
@@ -123,17 +123,17 @@
 
             var attachment1 =
                 new Attachment(
-                    Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\ddd.jpg")),
+                    Convert.ToBase64String(File.ReadAllBytes(@"C:\Temp\test.jpg")),
                     "ddd.jpg",
                     System.Net.Mime.MediaTypeNames.Image.Jpeg);
             var attachment2 =
                 new Attachment(
                     Convert.ToBase64String(
-                        File.ReadAllBytes(@"C:\Users\a.donmez\Desktop\prove firme foto\Admissions.pdf")),
+                        File.ReadAllBytes(@"C:\Temp\test.pdf")),
                     "Admissions.pdf",
                     System.Net.Mime.MediaTypeNames.Application.Pdf);
 
-            var mailMessage = new MailMessage(AddressBook.Ali, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+            var mailMessage = new MailMessage(AddressBook.AgendaSviluppo, AddressBook.Andrea, Subject, Body, IsBodyHtml);
             mailMessage.Attachments.Add(attachment1);
             mailMessage.Attachments.Add(attachment2);
             return mailMessage;

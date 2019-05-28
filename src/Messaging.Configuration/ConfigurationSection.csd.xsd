@@ -9,6 +9,7 @@
 -->
 <xs:schema xmlns:tns="urn:Apexnet.Messaging.Configuration" elementFormDefault="qualified" targetNamespace="urn:Apexnet.Messaging.Configuration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="ApexnetPushService" type="tns:Apexnet.Messaging.Configuration.ApexnetPushServiceCT" />
+	<xs:element name="ApexnetMailSettings" type="tns:Apexnet.Messaging.Configuration.ApexnetMailSettingsCT" />
 	<xs:complexType name="Apexnet.Messaging.Configuration.ApexnetPushServiceReferenceCT">
 		<xs:attribute name="url" use="required" type="xs:string">
 			<xs:annotation>
@@ -20,5 +21,37 @@
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:element minOccurs="0" maxOccurs="1" name="apexnetPushServiceReference" type="tns:Apexnet.Messaging.Configuration.ApexnetPushServiceReferenceCT" />
 		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Apexnet.Messaging.Configuration.ApexnetMailSettingsCT">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element minOccurs="0" maxOccurs="1" name="apexnetMailSettingsReference" type="tns:Apexnet.Messaging.Configuration.ApexnetMailSettingsReferenceCT" />
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="Apexnet.Messaging.Configuration.ApexnetMailSettingsReferenceCT">
+		<xs:attribute name="smtp" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The Smtp.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="smtpUsername" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The SmtpUsername.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="smtpPassword" use="optional" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The SmtpPassword.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="smtpSsl" use="optional" type="xs:boolean">
+			<xs:annotation>
+				<xs:documentation>The SmtpSsl.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="smtpPort" use="optional" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>The SmtpPort.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 </xs:schema>

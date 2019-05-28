@@ -2,11 +2,11 @@
 <minimalLanguageDiagram dslVersion="1.0.0.0" Id="808dba36-f80a-4c7f-a4b7-e7588d460791" absoluteBounds="0, 0, 11, 8.5" name="ConfigurationSection">
   <configurationSectionModelMoniker Id="d0ed9acb-0435-4532-afdd-b5115bc4d562" />
   <nestedChildShapes>
-    <configurationSectionShape Id="cbece5cf-ee0c-4096-9820-7ce4c9b18d3d" absoluteBounds="1, 2.5, 2.125, 1.211080729166667" outlineDashStyle="Solid" outlineThickness="0.01">
+    <configurationSectionShape Id="cbece5cf-ee0c-4096-9820-7ce4c9b18d3d" absoluteBounds="1, 2.5, 2.875, 1.211080729166667" outlineDashStyle="Solid" outlineThickness="0.01">
       <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/ApexnetPushServiceReference" />
       <nestedChildShapes>
-        <elementListCompartment Id="5987a8ff-e68d-415a-ae6b-a9bf6b38d1b3" absoluteBounds="1.015, 2.91, 2.0949999999999998, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="8941b564-f6ec-43f7-aacb-793e81399930" absoluteBounds="1.015, 3.3616910807291669, 2.0949999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="5987a8ff-e68d-415a-ae6b-a9bf6b38d1b3" absoluteBounds="1.015, 2.91, 2.8449999999999998, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8941b564-f6ec-43f7-aacb-793e81399930" absoluteBounds="1.015, 3.3616910807291669, 2.8449999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </configurationSectionShape>
     <configurationSectionGroupShape Id="7d56464d-086e-4b49-bcf0-4d2a88d9be15" absoluteBounds="1.375, 0.5, 2.25, 1.2110807291666668" outlineDashStyle="Solid" outlineThickness="0.01">
@@ -14,7 +14,7 @@
       <nestedChildShapes>
         <elementListCompartment Id="1ccf4896-e360-4028-86f7-87904a5fb620" absoluteBounds="1.39, 0.91, 2.2199999999999998, 0.44169108072916663" name="ConfigurationSectionProperties" titleTextColor="Black" itemTextColor="Black" />
         <elementListCompartment Id="188e7ae1-73e8-4b3d-9fe7-288c36b474ee" absoluteBounds="1.39, 1.3616910807291667, 2.2199999999999998, 0.2493896484375" name="ConfigurationSectionGroupProperties" titleTextColor="Black" itemTextColor="Black" />
-        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(2.25 : 1.71108072916667); (2.25 : 2.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
+        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(2.5 : 1.71108072916667); (2.5 : 2.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
           <nodes>
             <configurationSectionGroupShapeMoniker Id="7d56464d-086e-4b49-bcf0-4d2a88d9be15" />
             <configurationSectionShapeMoniker Id="cbece5cf-ee0c-4096-9820-7ce4c9b18d3d" />
@@ -22,5 +22,25 @@
         </configurationSectionPropertyHasConfigurationSectionConnector>
       </nestedChildShapes>
     </configurationSectionGroupShape>
+    <configurationSectionGroupShape Id="7da09c09-e9bc-4cab-9d45-cf0caf354397" absoluteBounds="5.375, 1.5, 2.625, 1.211080729166667" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionGroupMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/ApexnetMailSettings" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e7a3dab7-3b9c-4a61-88ee-1370dac91fe4" absoluteBounds="5.39, 1.9100000000000001, 2.5949999999999998, 0.44169108072916663" name="ConfigurationSectionProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a9a8eb2e-b32c-4c77-ad0f-c65aac42955e" absoluteBounds="5.39, 2.3616910807291669, 2.5949999999999998, 0.2493896484375" name="ConfigurationSectionGroupProperties" titleTextColor="Black" itemTextColor="Black" />
+        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(7.0625 : 2.71108072916667); (7.0625 : 3.375)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
+          <nodes>
+            <configurationSectionGroupShapeMoniker Id="7da09c09-e9bc-4cab-9d45-cf0caf354397" />
+            <configurationSectionShapeMoniker Id="6120f668-80fe-4604-9e5e-68ebe58324e4" />
+          </nodes>
+        </configurationSectionPropertyHasConfigurationSectionConnector>
+      </nestedChildShapes>
+    </configurationSectionGroupShape>
+    <configurationSectionShape Id="6120f668-80fe-4604-9e5e-68ebe58324e4" absoluteBounds="6.125, 3.375, 2.75, 1.9802864583333326" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/ApexnetMailSettingsReference" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66c7cf49-b455-4a8f-9416-66a7b125b6bf" absoluteBounds="6.14, 3.785, 2.7199999999999998, 1.210896809895833" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c0e8584c-61a9-45c8-9c89-07d80195cb65" absoluteBounds="6.14, 5.005896809895833, 2.7199999999999998, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationSectionShape>
   </nestedChildShapes>
 </minimalLanguageDiagram>
