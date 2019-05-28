@@ -1,6 +1,5 @@
-<smtp from="" deliveryMethod="specifiedPickupDirectory">
-  <specifiedPickupDirectory pickupDirectoryLocation="C:\Temp\maildrop"></specifiedPickupDirectory>
-</smtp>
-<!-- <smtp from="" deliveryMethod="network">
-  <network defaultCredentials="false" host="smtp.gmail.com" password="0123456789" port="587" userName="user@example.com" enableSsl="true" />
-</smtp> -->
+<apexnetMailSettingsReference smtp="smtp.gmail.com"
+                              smtpUsername="user@example.com"
+                              smtpPassword="0123456789"
+                              smtpSsl="true"
+                              smtpPort="587" />
