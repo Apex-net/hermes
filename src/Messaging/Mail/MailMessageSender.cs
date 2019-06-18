@@ -7,7 +7,7 @@
     using Apexnet.Messaging.Configuration;
 
     using Common.Utils;
-
+    using MailKit.Security;
     using MimeKit;
 
     public class MailMessageSender : IDisposable
@@ -22,7 +22,7 @@
         private MailMessageSender(SmtpClient smtpClient)
         {
             this.smtpClient = smtpClient ?? new SmtpClient();
-        }        
+        }
 
         public void Send(MailMessage message)
         {
@@ -48,22 +48,22 @@
 
             mailMessage.Body = builder.ToMessageBody();
 
-            var client = new MailKit.Net.Smtp.SmtpClient();
-            client.Connect(
-                ApexnetMailSettingsReference.Instance.Smtp, 
-                ApexnetMailSettingsReference.Instance.SmtpPort, 
-                ApexnetMailSettingsReference.Instance.SmtpSsl);
-
-            if (!string.IsNullOrWhiteSpace(ApexnetMailSettingsReference.Instance.SmtpUsername) &&
-                !string.IsNullOrWhiteSpace(ApexnetMailSettingsReference.Instance.SmtpPassword))
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
             {
-                client.Authenticate(
-                    ApexnetMailSettingsReference.Instance.SmtpUsername,
-                    ApexnetMailSettingsReference.Instance.SmtpPassword);
-            }
+                client.ServerCertificateValidationCallback = (s, c, ch, e) => true;
+                client.Connect(ApexnetMailSettingsReference.Instance.Smtp, ApexnetMailSettingsReference.Instance.SmtpPort, SecureSocketOptions.SslOnConnect);
 
-            client.Send(mailMessage);
-            client.Disconnect(true);
+                if (!string.IsNullOrWhiteSpace(ApexnetMailSettingsReference.Instance.SmtpUsername) &&
+                    !string.IsNullOrWhiteSpace(ApexnetMailSettingsReference.Instance.SmtpPassword))
+                {
+                    client.Authenticate(
+                        ApexnetMailSettingsReference.Instance.SmtpUsername,
+                        ApexnetMailSettingsReference.Instance.SmtpPassword);
+                }
+
+                client.Send(mailMessage);
+                client.Disconnect(true);
+            }
         }
 
         public void Dispose()

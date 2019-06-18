@@ -34,6 +34,24 @@
             Assert.Equal(schedule, response.Schedule);
         }
 
+
+        [Fact]
+        [UsedImplicitly]
+        public async Task Test_MailOnly()
+        {
+            var schedule = new DateTimeOffset(DateTime.Now);
+
+            var request = new ScheduledBundleRequest(schedule);
+
+            request.MailMessages.Add(NewMailMessage());
+
+            var response = await this.client.ScheduleAsync(request)
+                                     .ConfigureAwait(false);
+
+            Assert.NotNull(response.Id);
+            Assert.Equal(schedule, response.Schedule);
+        }
+
         [Fact]
         [UsedImplicitly]
         public async Task Test_Recur()
@@ -109,7 +127,7 @@
                 "<p>Ignorare, grazie.</p>";
             const bool IsBodyHtml = true;
 
-            return new MailMessage(AddressBook.Andrea, AddressBook.AgendaSviluppo, Subject, Body, IsBodyHtml);
+            return new MailMessage(AddressBook.AgendaSviluppo, AddressBook.Fabio, Subject, Body, IsBodyHtml);
         }
 
         private static MailMessage NewMailMessageWithAttachments()

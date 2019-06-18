@@ -70,6 +70,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\configs\apexnet-pushservice.config" />
+    <None Include="bin\Debug\configs\apexnet-pushservice.config-template" />
+    <None Include="bin\Debug\configs\hangfirestorage-redis.config-template" />
+    <None Include="bin\Debug\configs\smtp.config" />
+    <None Include="bin\Debug\configs\smtp.config-template" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +86,9 @@
       <Project>{14f1bdca-d398-489c-aa01-cbc59736403b}</Project>
       <Name>Messaging</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\configs\.gitignore" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
