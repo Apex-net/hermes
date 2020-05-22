@@ -11,6 +11,11 @@ Dispatch Notification Suite.
 0. Extract contents of `DispatchApi-v*.7z`
 0. Convert extracted folder to Application in IIS (Target framework: **.NET 4.5**)
 
+## IIS Configuration
+
+0. Application Pool Advanced Settings: set "Start Mode" = "AlwaysRunning"
+
+0. Web Site Advanced Settings: set "Preload Enabled" = "True"
 
 ## Configuration
 
