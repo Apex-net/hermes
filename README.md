@@ -15,7 +15,11 @@ Dispatch Notification Suite.
 
 0. Application Pool Advanced Settings: set "Start Mode" = "AlwaysRunning"
 
+![](doc/images/application_pool.png)
+
 0. Web Site Advanced Settings: set "Preload Enabled" = "True"
+
+![](doc/images/website.png)
 
 ## Configuration
 
