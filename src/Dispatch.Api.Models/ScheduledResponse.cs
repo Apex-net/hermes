@@ -5,7 +5,7 @@
 
     public class ScheduledResponse : IScheduled
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public DateTimeOffset Schedule { get; set; }
     }

@@ -7,6 +7,6 @@
     [UsedImplicitly]
     public class Enqueued : IEnqueued
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
     }
 }

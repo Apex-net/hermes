@@ -10,7 +10,7 @@
             var jobId = BackgroundJob.Enqueue(job.Operation);
 
             var result = (IEnqueued)Activator.CreateInstance(typeof(TEnqueued));
-            result.Id = Guid.Parse(jobId);
+            result.Id = jobId;
         }
 
         public TScheduled Schedule<TSchedulable, TScheduled>(TSchedulable job)
@@ -20,7 +20,7 @@
             var jobId = BackgroundJob.Schedule(job.Operation, job.Schedule);
 
             var result = (TScheduled)Activator.CreateInstance(typeof(TScheduled));
-            result.Id = Guid.Parse(jobId);
+            result.Id = jobId;
             result.Schedule = job.Schedule;
 
             return result;
@@ -35,7 +35,7 @@
             RecurringJob.AddOrUpdate(jobId.ToString(), job.Operation, job.CronExpression);
 
             var result = (TEnqueued)Activator.CreateInstance(typeof(TEnqueued));
-            result.Id = jobId;
+            result.Id = jobId.ToString();
 
             return result;
         }

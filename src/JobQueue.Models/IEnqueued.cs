@@ -4,6 +4,6 @@ namespace Apexnet.JobQueue
 
     public interface IEnqueued
     {
-        Guid Id { get; set; }
+        string Id { get; set; }
     }
 }

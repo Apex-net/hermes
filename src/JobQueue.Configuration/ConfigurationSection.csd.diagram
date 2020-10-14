@@ -16,15 +16,21 @@
         </elementPropertyHasTypeConnector>
       </nestedChildShapes>
     </configurationSectionShape>
-    <configurationSectionGroupShape Id="cb3cab92-db74-406d-a37f-8a69c7758863" absoluteBounds="1.25, 1.25, 1.875, 1.2110807291666668" outlineDashStyle="Solid" outlineThickness="0.01">
+    <configurationSectionGroupShape Id="cb3cab92-db74-406d-a37f-8a69c7758863" absoluteBounds="1.25, 1.25, 1.875, 1.4033821614583331" outlineDashStyle="Solid" outlineThickness="0.01">
       <configurationSectionGroupMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/HangfireStorage" />
       <nestedChildShapes>
-        <elementListCompartment Id="b90bb1f0-bd8f-4f7a-9967-d375103db5c1" absoluteBounds="1.265, 1.6600000000000001, 1.8450000000000002, 0.44169108072916663" name="ConfigurationSectionProperties" titleTextColor="Black" itemTextColor="Black" />
-        <elementListCompartment Id="f13b50c0-30dc-42cc-9f13-42f568a8e6a5" absoluteBounds="1.265, 2.1116910807291669, 1.8450000000000002, 0.2493896484375" name="ConfigurationSectionGroupProperties" titleTextColor="Black" itemTextColor="Black" />
-        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(2.375 : 2.46108072916667); (2.375 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
+        <elementListCompartment Id="b90bb1f0-bd8f-4f7a-9967-d375103db5c1" absoluteBounds="1.265, 1.6600000000000001, 1.8450000000000002, 0.63399251302083326" name="ConfigurationSectionProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f13b50c0-30dc-42cc-9f13-42f568a8e6a5" absoluteBounds="1.265, 2.303992513020833, 1.8450000000000002, 0.2493896484375" name="ConfigurationSectionGroupProperties" titleTextColor="Black" itemTextColor="Black" />
+        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(2.375 : 2.65338216145833); (2.375 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
           <nodes>
             <configurationSectionGroupShapeMoniker Id="cb3cab92-db74-406d-a37f-8a69c7758863" />
             <configurationSectionShapeMoniker Id="7864333f-a552-4016-a64d-d849e60d609b" />
+          </nodes>
+        </configurationSectionPropertyHasConfigurationSectionConnector>
+        <configurationSectionPropertyHasConfigurationSectionConnector edgePoints="[(3.125 : 1.8749995); (5.8125 : 1.8749995); (5.8125 : 2.5)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="d919466a-4800-461d-81c7-e11140541141">
+          <nodes>
+            <configurationSectionGroupShapeMoniker Id="cb3cab92-db74-406d-a37f-8a69c7758863" />
+            <configurationSectionShapeMoniker Id="f006dc8f-e36b-4fa2-ad66-0192e025c6f3" />
           </nodes>
         </configurationSectionPropertyHasConfigurationSectionConnector>
       </nestedChildShapes>
@@ -36,5 +42,12 @@
         <elementListCompartment Id="e5f98a0b-7c94-4a90-8799-4517c23e560d" absoluteBounds="3.015, 6.9962939453125, 1.9700000000000002, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </configurationElementShape>
+    <configurationSectionShape Id="f006dc8f-e36b-4fa2-ad66-0192e025c6f3" absoluteBounds="5, 2.5, 1.625, 1.2110807291666665" outlineDashStyle="Solid" outlineThickness="0.01">
+      <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/SqlServerStorage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="23eda290-db85-41f2-885e-6d4c6bcb0105" absoluteBounds="5.015, 2.91, 1.5950000000000002, 0.44169108072916663" name="AttributeProperties" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="822e75af-02b3-4838-9382-ecda5b351540" absoluteBounds="5.015, 3.3616910807291669, 1.5950000000000002, 0.2493896484375" name="ElementProperties" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </configurationSectionShape>
   </nestedChildShapes>
 </minimalLanguageDiagram>

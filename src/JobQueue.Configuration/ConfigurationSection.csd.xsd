@@ -26,6 +26,7 @@
 	<xs:complexType name="Apexnet.JobQueue.Configuration.HangfireStorageCT">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:element minOccurs="0" maxOccurs="1" name="redisStorage" type="tns:Apexnet.JobQueue.Configuration.RedisStorageCT" />
+			<xs:element minOccurs="0" maxOccurs="1" name="sqlServerStorage" type="tns:Apexnet.JobQueue.Configuration.SqlServerStorageCT" />
 		</xs:choice>
 	</xs:complexType>
 	<xs:complexType name="Apexnet.JobQueue.Configuration.RedisStorageOptionsCT">
@@ -42,6 +43,13 @@
 		<xs:attribute name="prefix" use="optional" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The Prefix.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Apexnet.JobQueue.Configuration.SqlServerStorageCT">
+		<xs:attribute name="connectionString" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The ConnectionString.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>

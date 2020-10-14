@@ -36,6 +36,11 @@
             <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/RedisStorage" />
           </containedConfigurationSection>
         </configurationSectionProperty>
+        <configurationSectionProperty>
+          <containedConfigurationSection>
+            <configurationSectionMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/SqlServerStorage" />
+          </containedConfigurationSection>
+        </configurationSectionProperty>
       </configurationSectionProperties>
     </configurationSectionGroup>
     <configurationElement name="RedisStorageOptions">
@@ -57,6 +62,15 @@
         </attributeProperty>
       </attributeProperties>
     </configurationElement>
+    <configurationSection name="SqlServerStorage" codeGenOptions="Singleton, XmlnsProperty" xmlSectionName="sqlServerStorage">
+      <attributeProperties>
+        <attributeProperty name="ConnectionString" isRequired="true" isKey="false" isDefaultCollection="false" xmlName="connectionString" isReadOnly="false">
+          <type>
+            <externalTypeMoniker name="/d0ed9acb-0435-4532-afdd-b5115bc4d562/String" />
+          </type>
+        </attributeProperty>
+      </attributeProperties>
+    </configurationSection>
   </configurationElements>
   <propertyValidators>
     <validators />

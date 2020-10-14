@@ -20,13 +20,14 @@ namespace Apexnet.Dispatch.Api.App_Start
         private static readonly IHangfireJobStorage[] HangfireJobStorages = 
         {
             new HangfireRedisStorage("hangfire-redis"), 
-            new HangfireMemoryStorage("hangfire-memory")
+            new HangfireMemoryStorage("hangfire-memory"),
+            new HangfireSqlServerStorage("hangfire-sqlserver")
         };
 
         [UsedImplicitly]
         public void Configuration(IAppBuilder app)
         {
-            ConfigureEnabledHangfireJobStorage(Settings.Default.JobStorageName);
+            //ConfigureEnabledHangfireJobStorage(Settings.Default.JobStorageName);
 
             // Map Dashboard to the `http://<your-app>/jobs` URL.
             app.UseHangfireDashboard("/jobs");

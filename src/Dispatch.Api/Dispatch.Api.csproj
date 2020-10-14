@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>eb8a7e05</NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -175,6 +177,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApplicationPreload.cs" />
+    <Compile Include="App_Start\HangfireBootstrapper.cs" />
     <Compile Include="App_Start\HangfireStart.cs" />
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs">
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
